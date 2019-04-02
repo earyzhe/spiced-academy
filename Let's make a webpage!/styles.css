@@ -13,12 +13,22 @@
 }
 
 .welcome-text {
-    display: block;
+    display: inline-block;
+    text-align: center;
     color: white;
+    font-style: italic;
 }
 
 .get-started-button {
-    display: block;
+    text-align: center;
+    display: inline-block;
+    border: 2px solid #cc6600;
+    background-color: #ffcc33;
+    color: #cc6600;
+    padding: 5px 50px;
+    color: #cc6600;
+    border-radius: 40px;
+    font-size: 30px;
 }
 
 .centerd-container {
@@ -40,6 +50,10 @@
     height: 200px;
     float: right;
     /* display: inline-block; */
+}
+
+h1 {
+    font-size: 50px;
 }
 
 p {
