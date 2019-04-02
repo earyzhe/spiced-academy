@@ -1,10 +1,12 @@
 .header {
     height: 50px;
+    font-size: 0;
 }
 
 .hero {
     position: relative;
     text-align: center;
+    font-size: 0;
 }
 
 .hero-image {
@@ -16,6 +18,7 @@
     text-align: center;
     color: white;
     font-style: italic;
+    font-family: serif;
 }
 
 .get-started-button {
@@ -28,18 +31,13 @@
     color: #cc6600;
     border-radius: 40px;
     font-size: 30px;
-}
-
-.overlay {
-    position: absolute;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    color: rgba(0, 0, 0, 0.5);
+    font-family: serif;
 }
 
 .centerd-container {
     position: absolute;
+    display: block;
+    width: 800px;
     z-index: 2;
     top: 50%;
     left: 50%;
@@ -49,24 +47,24 @@
 .features {
     position: relative;
     /* text-align: center; */
-    background-color: #ddd6e1;
+    background-color: #caccce;
     width: 100%;
-    height: 500px;
+    padding-bottom: 80px;
 }
 
 .feature-img {
-    padding: 20px;
-    height: 50px;
-    width: 50px;
+    padding: 10px;
+    height: 60px;
+    width: 60px;
     display: inline-block;
 }
 
 .feature {
     width: 45%;
-    height: 150px;
     display: inline-block;
     position: relative;
-    padding: 20px;
+    padding: 10px;
+    margin: 10px;
 }
 
 .text-column {
@@ -74,7 +72,7 @@
     text-align: left;
     display: inline-block;
     position: absolute;
-    padding: 20px;
+    padding: 10px;
 }
 
 .column {
@@ -92,8 +90,18 @@
     display: block;
 }
 
-.copyright {
-    background-color: ;
+.copyright-box {
+    background-color: #434b4d;
+    display: block;
+    font-size: 0;
+}
+
+.copyright-text {
+    color: white;
+    padding: 10px 40px;
+    font-size: 15px;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
 }
 
 #logo {
@@ -116,12 +124,20 @@ h1 {
 
 h2 {
     padding: 2px;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
 }
 
 p {
     font-size: 20px;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
 }
 
 img {
     filter: brightness(70%);
+}
+
+b {
+    font-size: 0;
 }
