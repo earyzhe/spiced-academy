@@ -1,0 +1,26 @@
+.header {
+    border: 10px solid black;
+    height: 200px;
+}
+
+.hero {
+    display: block;
+}
+
+#logo {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    /* display: inline-block; */
+}
+
+#menu {
+    width: 200px;
+    height: 200px;
+    float: right;
+    /* display: inline-block; */
+}
+
+p {
+    font-size: 20px;
+}
