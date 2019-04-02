@@ -48,35 +48,44 @@
 
 .features {
     position: relative;
+    /* text-align: center; */
     background-color: #ddd6e1;
-    display: inline-block;
     width: 100%;
+    height: 500px;
 }
 
 .feature-img {
-    top: 60px;
     padding: 20px;
-    left: 0px;
     height: 50px;
     width: 50px;
     display: inline-block;
 }
 
 .feature {
-    width: 40%;
-    padding: 10px;
-    height: 200px;
+    width: 45%;
+    height: 150px;
     display: inline-block;
+    position: relative;
+    padding: 20px;
 }
 
-.feature-title {
+.text-column {
+    width: 380px;
+    text-align: left;
+    display: inline-block;
+    position: absolute;
+    padding: 20px;
 }
 
 .column {
-    float: left;
-    width: 30%;
-    display: inline-block;
-    position: absolute;
+    position: relative;
+    top: 50%;
+    height: 100px;
+    margin-top: -50px;
+}
+
+.centerd-box {
+    padding: 10px 100px;
 }
 
 .row {
@@ -92,8 +101,6 @@
     height: 35px;
     position: absolute;
     padding: 10px 30px;
-
-    /* display: inline-block; */
 }
 
 #menu {
@@ -101,7 +108,6 @@
     height: 30px;
     padding: 10px 30px;
     float: right;
-    /* display: inline-block; */
 }
 
 h1 {
