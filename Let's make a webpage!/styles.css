@@ -1,6 +1,5 @@
 .header {
-    border: 10px solid black;
-    height: 200px;
+    height: 50px;
 }
 
 .hero {
@@ -25,29 +24,52 @@
     border: 2px solid #cc6600;
     background-color: #ffcc33;
     color: #cc6600;
-    padding: 5px 50px;
+    padding: 2px 50px;
     color: #cc6600;
     border-radius: 40px;
     font-size: 30px;
 }
 
+.overlay {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    color: rgba(0, 0, 0, 0.5);
+}
+
 .centerd-container {
     position: absolute;
+    z-index: 2;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
+.features {
+    background-color: grey;
+}
+
+.feature {
+}
+
+.copyright {
+    background-color: ;
+}
+
 #logo {
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 35px;
     position: absolute;
+    padding: 10px 30px;
+
     /* display: inline-block; */
 }
 
 #menu {
-    width: 200px;
-    height: 200px;
+    width: 30px;
+    height: 30px;
+    padding: 10px 30px;
     float: right;
     /* display: inline-block; */
 }
@@ -58,4 +80,8 @@ h1 {
 
 p {
     font-size: 20px;
+}
+
+img {
+    filter: brightness(70%);
 }
