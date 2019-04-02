@@ -37,24 +37,24 @@ function logtypes() {
 }
 
 function logType(value) {
-    if (value === "undefined") {
+    if (typeof value === "undefined") {
         console.log("Value is " + "undefined");
-    } else if (value === null) {
-        console.log("Value is " + "null");
-    } else if (typeof value === "number") {
-        console.log("Value  " + typeof value + " is " + "number!");
-    } else if (typeof value === "string") {
-        console.log("Value  " + typeof value + " is " + "string!");
-    } else if (typeof value === "boolean") {
-        console.log("Value  " + typeof value + " is " + "boolean");
-    } else if (typeof value === "object") {
-        console.log("Value  " + typeof value + " is " + "object");
-    } else if (Array.isArray(value)) {
-        console.log("Value  " + typeof value + " is " + "array!");
-    } else if (isNaN(value)) {
-        console.log("Value  " + value + " is " + "not a number");
     } else if (typeof value === "function") {
         console.log("Value is a " + "function!");
+    } else if (value === null) {
+        console.log("Value is " + "null");
+    } else if (typeof value === "string") {
+        console.log("Value " + value + " is " + "string!");
+    } else if (Array.isArray(value)) {
+        console.log("Value is " + "array!");
+    } else if (typeof value === "boolean") {
+        console.log("Value " + value + " is " + "boolean");
+    } else if (typeof value === "object") {
+        console.log("Value is " + "object");
+    } else if (isNaN(value)) {
+        console.log("Value " + value + " is " + "not a number");
+    } else if (typeof value === "number") {
+        console.log(value + " is " + "number!");
     } else {
         console.log("Value is " + "I have no idea");
     }
