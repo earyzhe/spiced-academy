@@ -47,10 +47,40 @@
 }
 
 .features {
-    background-color: grey;
+    position: relative;
+    background-color: #ddd6e1;
+    display: inline-block;
+    width: 100%;
+}
+
+.feature-img {
+    top: 60px;
+    padding: 20px;
+    left: 0px;
+    height: 50px;
+    width: 50px;
+    display: inline-block;
 }
 
 .feature {
+    width: 40%;
+    padding: 10px;
+    height: 200px;
+    display: inline-block;
+}
+
+.feature-title {
+}
+
+.column {
+    float: left;
+    width: 30%;
+    display: inline-block;
+    position: absolute;
+}
+
+.row {
+    display: block;
 }
 
 .copyright {
@@ -76,6 +106,10 @@
 
 h1 {
     font-size: 50px;
+}
+
+h2 {
+    padding: 2px;
 }
 
 p {
