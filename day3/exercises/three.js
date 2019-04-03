@@ -1,32 +1,3 @@
-var testobj = {};
-
-function testFunc() {}
-
-var testArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-var testValues = [
-    undefined,
-    null,
-    56,
-    NaN,
-    "String",
-    true,
-    testFunc,
-    testobj,
-    testArray,
-    0,
-    1000,
-    100000027
-];
-
-function testFunction(array) {
-    for (var i = 0; i < array.length; i++) {
-        console.log(
-            "Result of test value " + array[i] + " is " + million(array[i])
-        );
-    }
-}
-
 function million(number) {
     if (number <= 0 || checkType(number)) {
         return "ERROR";
@@ -85,3 +56,32 @@ console.log(million(183764517856));
 console.log(million("test"));
 console.log(million(true));
 console.log(million(0));
+
+// var testobj = {};
+//
+// function testFunc() {}
+//
+// var testArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+// var testValues = [
+//     undefined,
+//     null,
+//     56,
+//     NaN,
+//     "String",
+//     true,
+//     testFunc,
+//     testobj,
+//     testArray,
+//     0,
+//     1000,
+//     100000027
+// ];
+//
+// function testFunction(array) {
+//     for (var i = 0; i < array.length; i++) {
+//         console.log(
+//             "Result of test value " + array[i] + " is " + million(array[i])
+//         );
+//     }
+// }
