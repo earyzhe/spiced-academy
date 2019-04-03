@@ -257,7 +257,7 @@ b {
         width: 80%;
         min-width: 0;
         text-align: center;
-        display: inline-block;
+        display: block;
         position: relative;
         padding: 10px;
     }
