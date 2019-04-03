@@ -1,3 +1,5 @@
+
+
 .header {
     height: 60px;
     font-size: 0;
@@ -42,8 +44,15 @@
     z-index: 2;
     top: 50%;
     left: 50%;
+    opacity: 1;
     transform: translate(-50%, -50%);
+    transition: 0 1;
+    transition-property: opacity;
+    transition-duration: 1;
+    transition-timing-function: ease-in-out;
+    transition-delay: 1;
 }
+
 
 .features {
     position: relative;
@@ -76,6 +85,16 @@
     float: left;
     padding: 10px;
     margin: 10px;
+    border-radius: 30px;
+
+}
+
+.feature:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.hoverable{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 .text-column {
@@ -124,6 +143,18 @@
     height: 30px;
     padding: 15px 30px 15px;
     float: right;
+}
+
+button{
+    outline:none;
+}
+
+button:active{
+    transform: translateY(4px);
+}
+
+button:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 h1 {
