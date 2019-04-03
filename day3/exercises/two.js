@@ -14,7 +14,7 @@ function delay(delayedFunction, time) {
     var start = today.getSeconds();
     var end;
 
-    console.log("Start delay time " + start);
+    // console.log("Start delay time " + start);
 
     setTimeout(completion, time);
 
@@ -22,7 +22,7 @@ function delay(delayedFunction, time) {
         delayedFunction();
         today = new Date();
         end = today.getSeconds();
-        console.log("End time " + end);
-        console.log("Delay time was " + (end - start));
+        // console.log("End time " + end);
+        console.log("Delay time was " + (end - start) + " Seconds");
     }
 }
