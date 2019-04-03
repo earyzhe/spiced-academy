@@ -206,9 +206,16 @@ b {
     }
 }
 
+@media only screen and (max-width: 941px) {
+    .feature {
+        height: 150px;
+    }
+}
+
 @media only screen and (max-width: 860px) {
 
     .feature {
+        height: 100%;
         max-width: 100%;
         width: 90%;
         min-width: 300px;
