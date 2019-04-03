@@ -57,14 +57,15 @@
 .features {
     position: relative;
     background-color: #caccce;
-    width: 100vw;
+    width: 100vw - 10vw;
     padding-top: 20px;
-    padding-bottom: 80px;
-    padding-left: 5vw;
-    padding-right: 5vw;
+    padding-bottom: 70px;
+    padding-left: 8vw;
+    padding-right: 2vw;
     align-items: center;
     display: inline-block;
     text-align: center;
+    margin-bottom: -2px
 }
 
 .feature-img {
@@ -77,7 +78,7 @@
 }
 
 .feature {
-    max-width: 45vw;
+    max-width: 40vw;
     width: 100%;
     min-width: 300px;
     display: inline-block;
@@ -90,7 +91,7 @@
 }
 
 .feature:hover{
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    /* box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); */
 }
 
 .hoverable{
@@ -98,7 +99,7 @@
 }
 
 .text-column {
-    width: 70%;
+    width: 80%;
     text-align: left;
     display: inline-block;
     position: relative;
