@@ -1,0 +1,17 @@
+
+# salt - A script to run commmands for spiced academy course
+
+function git-deploy {
+    read -r -p 'Commit message: ' desc
+    git -C /Users/earyzhe/Desktop/salt-code add .
+    git -C /Users/earyzhe/Desktop/salt-code add -u
+    git -C /Users/earyzhe/Desktop/salt-code commit -m "$desc"
+    git -C /Users/earyzhe/Desktop/salt-code push origin johnson:johnson
+}
+
+if [ $1 = deploy ]
+then
+git-deploy
+fi
+
+
