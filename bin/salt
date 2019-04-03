@@ -9,9 +9,16 @@ function git-deploy {
     git -C /Users/earyzhe/Desktop/salt-code push origin johnson:johnson
 }
 
-if [ $1 = deploy ]
+function git-log {
+    git -C /Users/earyzhe/Desktop/salt-code log
+}
+
+if [ $1 = deploy ] 
 then
-git-deploy
+ git-deploy
+elif [ $1 = log ]
+then
+ git-log
 fi
 
 
