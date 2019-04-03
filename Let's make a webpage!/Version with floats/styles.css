@@ -15,8 +15,10 @@
 
 .welcome-text {
     display: inline-block;
+    width: 100%;
     text-align: center;
     color: white;
+    font-size: 5vw;
     font-style: italic;
     font-family: serif;
 }
@@ -36,7 +38,7 @@
 
 .centerd-container {
     position: absolute;
-    width: 800px;
+    width: 100%;
     z-index: 2;
     top: 50%;
     left: 50%;
@@ -46,9 +48,14 @@
 .features {
     position: relative;
     background-color: #caccce;
-    width: 100%;
+    width: 100vw;
     padding-top: 20px;
     padding-bottom: 80px;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    align-items: center;
+    display: inline-block;
+    text-align: center;
 }
 
 .feature-img {
@@ -57,23 +64,27 @@
     width: 60px;
     display: inline-block;
     position: relative;
+    float: left;
 }
 
 .feature {
-    width: 480px;
+    max-width: 45vw;
+    width: 100%;
+    min-width: 300px;
     display: inline-block;
     position: relative;
+    float: left;
     padding: 10px;
     margin: 10px;
-    display: flex;
 }
 
 .text-column {
+    width: 70%;
     text-align: left;
     display: inline-block;
     position: relative;
     padding: 10px;
-    flex-grow: 1;
+    float: left;
 }
 
 .column {
@@ -81,16 +92,6 @@
     top: 50%;
     height: 100px;
     margin-top: -50px;
-}
-
-.centerd-box {
-    padding: 10px 100px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-    align-content: flex-start;
 }
 
 .row {
