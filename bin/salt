@@ -9,16 +9,37 @@ function git-deploy {
     git -C /Users/earyzhe/Desktop/salt-code push origin johnson:johnson
 }
 
+function open-classes {
+    open -a "Google Chrome" https://github.com/spicedacademy/salt
+}
+
+function open-my-repo {
+    open -a "Google Chrome" https://github.com/spicedacademy/salt-code/tree/johnson
+}
+
+function open-file {
+    cd /Users/earyzhe/Desktop/salt-code
+}
+
 function git-log {
     git -C /Users/earyzhe/Desktop/salt-code log
 }
 
-if [ $1 = deploy ] 
+if [ $1 = deploy ]
 then
  git-deploy
 elif [ $1 = log ]
 then
  git-log
+elif [ $1 = open ]
+then
+ open-file
+elif [ $1 = class ]
+then
+  open-classes
+elif [ $1 = repo ]
+then
+  open-my-repo
+else
+   echo "Unknown command"
 fi
-
-
