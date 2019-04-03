@@ -1,3 +1,5 @@
+  
+
 
 
 .header {
@@ -90,9 +92,11 @@
 
 }
 
-.feature:hover{
-    /* box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); */
+
+.feature:hover p, .feature:hover img, .feature:hover h2, .feature:hover h1{
+    transform: translateY(-3px);
 }
+
 
 .hoverable{
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
@@ -146,16 +150,26 @@
     float: right;
 }
 
+#menu:hover{
+    transform: scale(1.1);
+}
+
+#menu:active:hover{
+    transform: scale(1.1);
+    transform: translateY(4px);
+}
+
 button{
     outline:none;
 }
 
-button:active{
+button:active:hover{
     transform: translateY(4px);
 }
 
 button:hover{
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    transform: scale(1.1);
 }
 
 h1 {
