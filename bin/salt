@@ -25,6 +25,10 @@ function git-log {
     git -C /Users/earyzhe/Desktop/salt-code log
 }
 
+function open-project {
+    code -n /Users/earyzhe/Desktop/salt-code
+}
+
 if [ $1 = deploy ]
 then
  git-deploy
@@ -40,6 +44,9 @@ then
 elif [ $1 = repo ]
 then
   open-my-repo
+elif [ $1 = project ]
+then
+  open-project
 else
    echo "Unknown command"
 fi
