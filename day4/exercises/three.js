@@ -6,3 +6,10 @@
 //   getLessThanZero([1, 2]); //[]
 
 // Assumes that the given value is an arry of numnbers;
+
+function getLessThanZero(numberArray){
+    var newArray = numberArray;
+
+    for (var index = 0; index < array.length; index++) {
+    }
+}

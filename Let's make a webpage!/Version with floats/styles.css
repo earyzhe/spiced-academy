@@ -311,4 +311,18 @@ b {
         font-size: 35px;
         margin-bottom: 5px;
     }
+
+    @media only screen and (max-width: 400px) {
+
+        .welcome-text {
+            font-size: 25px;
+            margin-bottom: 5px;
+        }
+
+        .get-started-button {
+            padding: 2px 30px;
+            border-radius: 20px;
+            font-size: 15px;
+        }
+    }
 }

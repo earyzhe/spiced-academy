@@ -5,7 +5,6 @@
 var testArray = createArrayOfNumbers(15);
 
 console.log("Original order was: " + testArray);
-
 console.log("New order is: " + reverseArray(testArray));
 
 function reverseArray(array){
@@ -28,6 +27,5 @@ function createArrayOfNumbers(totalNumbers){
     for (var index = 0; index < totalNumbers + 1; index++) {
         numbers.push(index);
     }
-
     return numbers;
 }
