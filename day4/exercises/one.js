@@ -41,7 +41,6 @@ function test(testValues){
     }
 }
 
-
 function each(array, callback){
 
     if (typeof array === "object") {
@@ -60,7 +59,6 @@ function each(array, callback){
     }
     else{
         console.log('Error: no matching type');
-        
     }
 }
 
