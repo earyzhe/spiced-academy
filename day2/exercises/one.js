@@ -51,7 +51,7 @@ function logType(value) {
         console.log("Value " + value + " is " + "boolean");
     } else if (typeof value === "object") {
         console.log("Value is " + "object");
-    } else if (isNaN(value)) {
+    } else if (Number.isNaN(value)) {
         console.log("Value " + value + " is " + "not a number");
     } else if (typeof value === "number") {
         console.log(value + " is " + "number!");
