@@ -1,46 +1,26 @@
 function million(number) {
-    if (number <= 0 || checkType(number)) {
+    if (number <= 0 || isNotANumber(number)) {
         return "ERROR";
     } else {
         if (number >= 1000000) {
             return number;
         } else {
-            var multiplier = calculateMultipier(number);
-            return multiplier;
+
+            var returnNumber = 0;
+            var multiple = 0;
+
+            while (returnNumber < 1000000){
+                returnNumber = multiple * number;
+                multiple ++;
+            }
+
+            return returnNumber;
         }
-    }
-
-    function calculateMultipier(numberToCalc) {
-        var running = 0;
-        var factor = 0;
-
-        while (running <= 1000000) {
-            running = numberToCalc * factor;
-            factor++;
-        }
-
-        return factor - 2;
     }
 }
 
-function checkType(value) {
-    if (typeof value === "undefined") {
-        return true;
-    } else if (typeof value === "function") {
-        return true;
-    } else if (value === null) {
-        return true;
-    } else if (typeof value === "string") {
-        return true;
-    } else if (Array.isArray(value)) {
-        return true;
-    } else if (typeof value === "boolean") {
-        return true;
-    } else if (typeof value === "object") {
-        return true;
-    } else if (isNaN(value)) {
-        return true;
-    } else if (typeof value === "number") {
+function isNotANumber(value) {
+     if (typeof value === "number") {
         return false;
     } else {
         return true;
@@ -75,7 +55,10 @@ var testValues = [
     testArray,
     0,
     1000,
-    100000027
+    100000027,
+    2313,
+    321432,
+    43242,
 ];
 
 function testFunction(array) {
