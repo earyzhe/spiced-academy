@@ -12,7 +12,6 @@ var testArray = [1, 2, -1, -90, 10];
 console.log(getLessThanZero(testArray));
 console.log(testArray);
 
-
 function getLessThanZero(numberArray){
 
     var newArray = Array.from(numberArray);
