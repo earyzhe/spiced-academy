@@ -4,4 +4,21 @@
 // Once the countdown starts, it should count down to zero starting with the number that was passed to the 
 // constructor and logging each number to the console with a one second delay.
 
-var countdown= new Countdown()
+function Countdown(seconds){
+    this.seconds = seconds;
+    this.logSeconds = function (){
+        if (this.seconds < 0 ){
+            console.log(seconds);
+            this.start();
+        }
+    };
+    this.start = function(){
+
+        setTimeout(seconds, this.logSeconds);
+
+    };
+}
+var countdown= new Countdown(30);
+console.log(countdown);
+
+countdown.start();

@@ -14,7 +14,9 @@ var testStrings = [
     'beach',
     'thinG'
 ]
-
+for (var  = 0;  < .length; ++) {
+    
+}
 test(testStrings);
 
 function test(strings){
