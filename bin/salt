@@ -37,28 +37,22 @@ function create-day {
 
   WEEKDIRECTORY="/Users/earyzhe/Desktop/salt-code/week$weeknum"
   echo "Week directory is $WEEKDIRECTORY"
-  if [ -d "$WEEKDIRECTORY" ] 
+  if [ ! -d "$WEEKDIRECTORY" ] 
     then
-        echo "Week directory exists." 
-    else
         mkdir "$WEEKDIRECTORY"
     fi
 
   DAYDIRECTORY="$WEEKDIRECTORY/day$daynum"
   echo "Day directory is $DAYDIRECTORY"
-  if [ -d "$DAYDIRECTORY" ] 
+  if [ ! -d "$DAYDIRECTORY" ] 
     then
-        echo "Day directory exists." 
-    else
         mkdir "$DAYDIRECTORY"  
     fi
 
   EXERCISEDIRECTORY="$WEEKDIRECTORY/day$daynum/exercises"
   echo "Exercise directory is $EXERCISEDIRECTORY"
-  if [ -d "$EXERCISEDIRECTORY" ] 
+  if [ ! -d "$EXERCISEDIRECTORY" ] 
     then
-        echo "Exercise directory exists." 
-    else
         mkdir "$EXERCISEDIRECTORY"  
     fi
 }

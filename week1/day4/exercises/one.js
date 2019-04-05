@@ -43,18 +43,18 @@ function test(testValues){
 
 function each(array, callback){
 
-    if (typeof array === "object") {
-        for (var key in array) {
-            if (array.hasOwnProperty(key)) {
-                var value = array[key];
-                logKeyAndValue(value, key)
-            }
-        }
-    }
-    else if (Array.isArray(array)) {
+    if (Array.isArray(array)) {
+        console.log('In array');
         for (let index = 0; index < array.length; index++) {
             var value = array[index];
-            logKeyAndValue(value, index)
+            callback(value, index)
+        }
+    }
+    else if (typeof array === "object") {
+        console.log('In object');
+        for (var key in array) {
+            var value = array[key];
+            callback(value, key)
         }
     }
     else{

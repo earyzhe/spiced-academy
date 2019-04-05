@@ -10,11 +10,12 @@
 var testArray = [1, 2, -1, -90, 10];
 
 console.log(getLessThanZero(testArray));
+console.log(testArray);
 
 
 function getLessThanZero(numberArray){
 
-    var newArray = numberArray;
+    var newArray = Array.from(numberArray);
 
     for (var index = 0; index < newArray.length; index++) {
 
@@ -26,4 +27,6 @@ function getLessThanZero(numberArray){
     }
     return newArray;
 }
+
+
 
