@@ -6,10 +6,40 @@
 // String.prototype.toUpperCase and String.prototype.toLowerCase will come in handy here.
 
 // hello => hELLO;
-function invertCase(){
-    
-    var newString = '';
-    for (var index = 0; index < array.length; index++) {
 
+var testStrings = [
+    'HeLLo',
+    'Yo',
+    'YAKA',
+    'beach',
+    'thinG'
+]
+
+test(testStrings);
+
+function test(strings){
+    for (var index = 0; index < strings.length; index++) {
+        var testString = strings[index];
+        console.log(testString + " is now " + invertCase(testString) + ' and the test String is still ' + testString );
+        invertCase(testString);
     }
+}
+
+function invertCase(string){
+
+    var newString = '';
+
+    for (var index = 0; index < string.length; index++) {
+
+        var character = string[index];
+        
+        if (character == character.toUpperCase()) {
+            character = character.toLowerCase()
+        }else{
+            character = character.toUpperCase()
+        }
+        newString += character;
+    }
+
+    return newString;
 }
