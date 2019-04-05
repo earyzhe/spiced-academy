@@ -1,22 +1,68 @@
-body{
-    width: 3px;
-    border: 3px black solid;
-}
+
 
 header{
+    top: 97px;
     width: 200px;
     height: 200px;
     border-radius: 50%;
     position: absolute;
+    border: 3px black solid;
 }
 
-aside{
-    position: absaloute;
+.centerd{
+     /* method one */
+     /* translate: translateX(-50%);
+     left: 50%; */
+     /* method two */
+     /* left: 0;
+     right: 0;
+     margin: auto; */
+     /* Just from the border */
+     left: 200px
+}
+
+.bit{
     width: 3px;
-    height: 400px;
-    
+    background-color: blueviolet;
+    position: absolute;
 }
 
-#left{
+.arm{
+    top: 270px;
+    height: 200px;
+}
+
+#body{
+    top: 300px;
+    height: 400px;
+    left: 302px
+}
+
+#leftArm{
+    left: 372px;
     transform: rotate(45deg);
+}
+
+#rightArm{
+    left: 232px;
+    transform: rotate(135deg);
+}
+
+footer{
+    height: 300px;
+    top: 679px;
+}
+
+#leftLeg{
+    left: 377px;
+    
+    transform: rotate(150deg);
+}
+
+#rightLeg{
+
+    left: 227px;
+    top: 679px;
+    transform: rotate(30deg);
+    
 }

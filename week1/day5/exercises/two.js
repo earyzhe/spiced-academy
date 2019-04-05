@@ -14,9 +14,7 @@ var testStrings = [
     'beach',
     'thinG'
 ]
-for (var  = 0;  < .length; ++) {
-    
-}
+
 test(testStrings);
 
 function test(strings){
@@ -34,7 +32,7 @@ function invertCase(string){
     for (var index = 0; index < string.length; index++) {
 
         var character = string[index];
-        
+
         if (character == character.toUpperCase()) {
             character = character.toLowerCase()
         }else{
