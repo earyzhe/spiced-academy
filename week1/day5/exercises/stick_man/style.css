@@ -1,4 +1,28 @@
+@keyframes bulger {
+    0% {
+      transform: translateX(0%);
+    }
+    25% {
+        width: translateX(40%)  
+    }
+    50% {
+        transform: translateX(0%)  
+    }
+    75%
+    {
+        transform: translateX(-40%)  
+    }
+    100%
+    {
+        transform: translateX(0%)  
+    }
+  }
 
+.bludge {
+    animation-name: bulger;
+    animation-duration: 1s;
+    animation-iteration-count: infinite
+}
 
 header{
     top: 97px;
@@ -7,6 +31,28 @@ header{
     border-radius: 50%;
     position: absolute;
     border: 3px black solid;
+    transition-property: height;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in;
+}
+
+header:active{
+    transform: scale(1.2);
+}
+
+#man{
+    width: 100%;
+    position: relative;
+    transition-property: height;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in;
+}
+
+.bit{
+    width: 3px;
+    background-color: blueviolet;
+    position: absolute;
+    border-radius: 3px
 }
 
 .face{
@@ -16,8 +62,17 @@ header{
 
 .eye{
     top: 55px;
-    height: 20px;
-    transform: rotate(90deg)
+    height: 40px;
+    width: 20px;
+    transform: rotate(90deg);
+    transition-property: height;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in;
+    border-radius: 10px;
+}
+
+.eye:hover{
+    top: 50px
 }
 
 #lefteye{
@@ -34,6 +89,7 @@ header{
 }
 
 #mouth{
+    border-radius: 5px;
     top: 60%;
     height: 80PX;
     transform: rotate(90deg)
@@ -51,15 +107,17 @@ header{
      left: 200px
 }
 
-.bit{
-    width: 3px;
-    background-color: blueviolet;
-    position: absolute;
-}
-
 .arm{
     top: 270px;
     height: 200px;
+}
+
+#righthand{
+    border-radius: 10px;
+    top: 250px;
+    left: 432px;
+    width: 50px;
+    height: 50px
 }
 
 #body{
@@ -96,3 +154,17 @@ footer{
     transform: rotate(30deg);
     
 }
+
+#naughty{
+    height: 100px;
+    left: 302px;
+    top: 700px;
+}
+
+#naughty:active{
+    transform-origin: top center;
+    transform: rotate(20deg) 
+    /* transform: scale(1.2); */
+}
+
+
