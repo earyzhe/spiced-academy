@@ -5,20 +5,25 @@
 // constructor and logging each number to the console with a one second delay.
 
 function Countdown(seconds){
+
+    var self = this;
     this.seconds = seconds;
     this.logSeconds = function (){
-        if (this.seconds < 0 ){
+
+        var shouldKeepRunning = seconds > 0
+
+        if ( shouldKeepRunning ){
             console.log(seconds);
-            this.start();
+            self.start();
+            seconds --;
         }
     };
+    
+    /// TODO why does it not work?!?!?!?
     this.start = function(){
-
-        setTimeout(seconds, this.logSeconds);
-
+        var logSeconds = self.logSeconds; 
+        setTimeout(logSeconds, 1000);
     };
 }
-var countdown= new Countdown(30);
-console.log(countdown);
-
+var countdown= new Countdown(5);
 countdown.start();

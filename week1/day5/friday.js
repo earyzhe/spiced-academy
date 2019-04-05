@@ -17,5 +17,3 @@ for (var index = 0; index < numbers.length; index++) {
 numbers = {};
 
 numbers['y'] = xx;
-
-console.log(numbers.y);

@@ -27,6 +27,9 @@ function Rectangle(width, height){
 }
 
 Rectangle.prototype = new Square;
+
+// Rectangle.prototype = Square.prototype;
+
 Rectangle.prototype.constructor = Rectangle;
 
 var rectangleTests = [ new RectangleTest(30,2,60),
@@ -99,9 +102,3 @@ function SquareTest(number, answer){
     this.number = number,
     this.answer = number * number;
 }
-
-
-
-// var r = new Rectangl(5,10);
-// var s = new Square(10);
-

@@ -1,0 +1,22 @@
+body{
+    width: 3px;
+    border: 3px black solid;
+}
+
+header{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    position: absolute;
+}
+
+aside{
+    position: absaloute;
+    width: 3px;
+    height: 400px;
+    
+}
+
+#left{
+    transform: rotate(45deg);
+}
