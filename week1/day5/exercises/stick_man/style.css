@@ -9,6 +9,36 @@ header{
     border: 3px black solid;
 }
 
+.face{
+    position: absolute;
+    left: 100px;
+}
+
+.eye{
+    top: 55px;
+    height: 20px;
+    transform: rotate(90deg)
+}
+
+#lefteye{
+    left: 70px
+}
+
+#righteye{ 
+    left: 130px;
+}
+
+#nose{
+    top: 50%;
+    height: 40px;
+}
+
+#mouth{
+    top: 60%;
+    height: 80PX;
+    transform: rotate(90deg)
+}
+
 .centerd{
      /* method one */
      /* translate: translateX(-50%);
