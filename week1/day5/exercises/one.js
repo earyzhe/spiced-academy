@@ -10,9 +10,6 @@
 //  var rect = new Rectangle(4, 5);
 //  rect.getArea(); //20
 
-
-
-
 function Square(num){
     this.width = num;
     this.height = num;
@@ -28,7 +25,7 @@ function Rectangle(width, height){
 
 Rectangle.prototype = new Square;
 
-// Rectangle.prototype = Square.prototype;
+// Rectangle.prototype =  Object.create(Square.prototype);
 
 Rectangle.prototype.constructor = Rectangle;
 
