@@ -7,7 +7,7 @@ function git-deploy {
     git -C /Users/earyzhe/Desktop/salt-code add -u
     git -C /Users/earyzhe/Desktop/salt-code commit -m "$desc"
     git -C /Users/earyzhe/Desktop/salt-code push origin johnson:johnson
-    git -C /Users/earyzhe/Desktop/salt-code push earyzhe master:master
+    git -C /Users/earyzhe/Desktop/salt-code push earyzhe HEAD:master
 }
 
 function open-classes {
