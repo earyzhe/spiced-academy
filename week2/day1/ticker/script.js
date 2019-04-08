@@ -23,3 +23,11 @@
         }
     }
 })();
+
+for (var index = 0; index < array.length; index++) {
+    
+    var b 
+var b 
+var b 
+var b 
+}
