@@ -1,0 +1,24 @@
+*{
+    background-color: red
+}
+
+#container{
+
+}
+
+.box{
+    background-color: violet;
+    height: 300px;
+    width: 200px;
+}
+
+#circle{
+    border-radius: 50%;
+    height: 300px;
+    width: 300px;
+    background-color: green;
+}
+
+div{
+    display: inline-block;
+}
