@@ -31,7 +31,6 @@ function open-project {
 }
 
 function create-day {
-  echo "In create-day function" 
   
   read -r -p 'Week number: ' weeknum
   read -r -p 'Day number: ' daynum

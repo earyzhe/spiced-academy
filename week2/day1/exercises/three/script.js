@@ -7,20 +7,17 @@
 // font-size of 200px, 
 // and contain the text 'AWESOME'.
 
-var element = document.createElement('div');
-element.style.display = 'fixed';
-element.style.zIndex = '2147483647';
-element.style.left = '20px';
-element.style.top = '100px';
-element.style.fontSize = '200px'
-var text = document.createTextNode('AWSOME')
-element.appendChild(text);
+
 
 
 (function () {
-    function insertElement(element){
-
-        document.body.appendChild()
-
-    }
+    var element = document.createElement('div');
+    element.style.display = 'fixed';
+    element.style.zIndex = '2147483647';
+    element.style.left = '20px';
+    element.style.top = '100px';
+    element.style.fontSize = '200px'
+    var text = document.createTextNode('AWSOME')
+    element.appendChild(text);
+    document.body.appendChild(element);
 })();
