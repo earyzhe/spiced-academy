@@ -1,0 +1,13 @@
+.classOne{
+    height: 200px;
+    width: 200px;
+    display: inline-block;
+    background-color: aqua;
+}
+
+.classTwo{
+    height: 150px;
+    width: 300px;
+    display: inline-block;
+    background-color: tomato;
+}
