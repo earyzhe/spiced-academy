@@ -12,31 +12,35 @@ body {
 #headlines {
     position: absolute;
     top: 0;
-    left: 50%;
     white-space: nowrap;
+    
+}
+
+#bottom-healines{
+    position: absolute;
+    bottom: 0;
+    white-space: nowrap;
+    width: vw;
+}
+
+#bottom-ticker{
+    overflow: hidden;
+    width: vw;
+    position: fixed;
+    bottom: 0px;
+    border-top: 1px black solid;
+    height: 1.5em;
+}
+
+a:hover{
+    text-decoration: underline;
+    color: blue;
 }
 
 a{
     padding: 30px;
+    font-style: normal;
+    text-decoration: unset;
+    color: black
 }
 
-
-@keyframes bulger {
-    0% {
-          
-    }
-    25% {
-        
-    }
-    50% {
-        
-    }
-    75%
-    {
-        
-    }
-    100%
-    {
-        
-    }
-  }

@@ -1,12 +1,25 @@
 (function () {
 
     var headlines = document.getElementById('headlines')
+    headlines.onmouseenter = mouseOverHeadlines
+    function mouseOverHeadlines(){
+        cancelAnimationFrame(currentAnimationFrame);
+
+    }
+
+    headlines.onmouseleave = mouseOutOfHeadlines
     
     var left = headlines.offsetLeft;
     
     var links = headlines.getElementsByTagName('a');
+    var currentAnimationFrame = 0;
    
     moveElementLeft();
+
+
+    function mouseOutOfHeadlines(){
+        moveElementLeft();
+    }
 
     function moveElementLeft(){
         left --;
@@ -17,7 +30,7 @@
         console.log(left + 'px');
         headlines.style.left = left + 'px';
         
-        requestAnimationFrame(moveElementLeft)
+        currentAnimationFrame = requestAnimationFrame(moveElementLeft)
         if (left < -1800 ){
             left = 0 + 'px';
         }
