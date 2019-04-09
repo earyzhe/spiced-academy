@@ -1,46 +1,82 @@
 (function () {
 
-    var headlines = document.getElementById('headlines')
-    headlines.onmouseenter = mouseOverHeadlines
-    function mouseOverHeadlines(){
-        cancelAnimationFrame(currentAnimationFrame);
-
-    }
-
-    headlines.onmouseleave = mouseOutOfHeadlines
-    
-    var left = headlines.offsetLeft;
-    
-    var links = headlines.getElementsByTagName('a');
     var currentAnimationFrame = 0;
-   
-    moveElementLeft();
 
+    // Top variables
 
-    function mouseOutOfHeadlines(){
-        moveElementLeft();
+    var headlinesTop = document.getElementById('headlines')
+    headlinesTop.onmouseenter = mouseOverHeadlinesTop
+    headlinesTop.onmouseleave = mouseOutOfHeadlinesBottom
+
+    var headlinesleft = headlinesTop.offsetLeft;
+    var topLinks = headlinesTop.getElementsByClassName('top');
+
+    moveTopElementLeft();
+
+    // Top bar functions
+
+    function mouseOverHeadlinesTop(){
+        cancelAnimationFrame(currentAnimationFrame);
+    }    
+
+    function mouseOutOfHeadlinesBottom(){
+        moveTopElementLeft();
     }
 
-    function moveElementLeft(){
-        left --;
-        if (left <= -links[0].offsetWidth){
-            left += links[0].offsetWidth;
-            headlines.appendChild(links[0])
+    function moveTopElementLeft(){
+        headlinesleft --;
+        if (headlinesleft <= -topLinks[0].offsetWidth){
+            headlinesleft += topLinks[0].offsetWidth;
+            headlinesTop.appendChild(topLinks[0])
         }
-        console.log(left + 'px');
-        headlines.style.left = left + 'px';
+        headlinesTop.style.left = headlinesleft + 'px';
         
-        currentAnimationFrame = requestAnimationFrame(moveElementLeft)
-        if (left < -1800 ){
-            left = 0 + 'px';
+        currentAnimationFrame = requestAnimationFrame(moveTopElementLeft)
+        if (headlinesleft < -1800 ){
+            headlinesleft = 0 + 'px';
+        }
+    }
+
+
+    // Bottom variables
+
+    var headlinesBottom = document.getElementById('bottom-headlines')
+    headlinesBottom.onmouseenter = mouseOverBottomHeadlines
+    headlinesBottom.onmouseleave = mouseOutOfBottomHeadlines
+
+    var headlinesRight =  window.innerWidth;
+    var bottomLinks = headlinesBottom.getElementsByClassName('bottom');
+
+    moveBottomElementRight();
+
+    // Bottom bar functions
+
+    function mouseOverBottomHeadlines(){
+        cancelAnimationFrame(currentAnimationFrame);
+    }    
+
+    function mouseOutOfBottomHeadlines(){
+        moveBottomElementRight();
+    }
+
+    function moveBottomElementRight(){
+        console.log(headlinesRight);
+        headlinesRight --;
+        console.log(bottomLinks);
+        var rightHeadline = bottomLinks[bottomLinks.length - 1];
+
+        if (  headlinesRight === 0 - rightHeadline.offsetWidth ){
+            headlinesRight += rightHeadline.offsetWidth;
+            console.log('inserting');
+            headlinesBottom.insertBefore(rightHeadline, bottomLinks[0]);
+            console.log(headlinesBottom.children);
+        }
+        // console.log(headlinesRight + 'px' + headlinesBottom.children);
+        headlinesBottom.style.right = headlinesRight + 'px';
+        
+        currentAnimationFrame = requestAnimationFrame(moveBottomElementRight)
+        if (headlinesRight > 1800 ){
+            headlinesRight = 0 + 'px';
         }
     }
 })();
-
-for (var index = 0; index < array.length; index++) {
-    
-    var b 
-var b 
-var b 
-var b 
-}

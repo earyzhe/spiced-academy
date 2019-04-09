@@ -16,18 +16,16 @@ body {
     
 }
 
-#bottom-healines{
+#bottom-headlines{
     position: absolute;
     bottom: 0;
     white-space: nowrap;
-    width: vw;
+    /* width: vw; */
 }
 
 #bottom-ticker{
     overflow: hidden;
-    width: vw;
-    position: fixed;
-    bottom: 0px;
+    position: relative;
     border-top: 1px black solid;
     height: 1.5em;
 }
