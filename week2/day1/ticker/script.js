@@ -44,7 +44,7 @@
     headlinesBottom.onmouseenter = mouseOverBottomHeadlines
     headlinesBottom.onmouseleave = mouseOutOfBottomHeadlines
 
-    var headlinesRight =  window.innerWidth;
+    var headlinesRight =  0;
     var bottomLinks = headlinesBottom.getElementsByClassName('bottom');
 
     moveBottomElementRight();
@@ -60,9 +60,7 @@
     }
 
     function moveBottomElementRight(){
-        console.log(headlinesRight);
         headlinesRight --;
-        console.log(bottomLinks);
         var rightHeadline = bottomLinks[bottomLinks.length - 1];
 
         if (  headlinesRight === 0 - rightHeadline.offsetWidth ){
