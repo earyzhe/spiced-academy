@@ -37,7 +37,6 @@
         }
     }
 
-
     // Bottom variables
 
     var headlinesBottom = document.getElementById('bottom-headlines')
