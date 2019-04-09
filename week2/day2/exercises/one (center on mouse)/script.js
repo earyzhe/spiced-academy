@@ -11,7 +11,6 @@
     document.onmousemove = mouseMoveHandler;
     var box = document.getElementById('box');
     console.log(box);
-
     function mouseMoveHandler(event){
 
         var mouseX = event.pageX;
