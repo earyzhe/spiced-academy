@@ -75,16 +75,17 @@
 
         function displayWinner(){
             console.log('creating popup');
-            var text = document.createTextNode(winner + 'Was the winner');
-            var popup = document.createElement('div');
-            popup.style.width = '200px';
-            popup.style.height = '200px';
-            popup.style.display = 'absolute';
-            popup.style.top  = '50%';
-            popup.style.left  = '50%';
-            popup.style.zIndex = '100'
-            document.body.appendChild(popup);
-            popup.appendChild(text);
+            window.alert(winner + ' Was the winner');
+            // var text = document.createTextNode(winner + 'Was the winner');
+            // var popup = document.createElement('div');
+            // popup.style.width = '200px';
+            // popup.style.height = '200px';
+            // popup.style.display = 'absolute';
+            // popup.style.top  = '50%';
+            // popup.style.left  = '50%';
+            // popup.style.zIndex = '100'
+            // document.body.appendChild(popup);
+            // popup.appendChild(text);
         }
         
     }

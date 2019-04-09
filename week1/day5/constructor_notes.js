@@ -2,33 +2,35 @@
 
 ///This is the constructor of Person.protype.constructor
 function Person(name, age, sleepNoise){
-    this.name = 'Andrew';
-    this.age = 44;
+    this.name = name;
+    this.age = age;
     this.sleep = function(){
         console.log(sleepNoise);  
     }
 }
 
 function Actor(n, a , o){
-    Person.call(n,a)
-    this.oscar = o
-    this.films = 2
+    Person.call(this, n, a);
+    // super(n, la);
+    this.oscar = o;
+    this.films = 2;
     this.act = function(){ console.log('To be or not to be');}
 }
 
 var andrew = new Person('Andrew',30, 'zzzzzzzzzzz');
 var luka = new Person('Luka' ,29, 'hello , what, no i didn\'t do it ');
-var leo = new Actor()
 
 /// A two ways to inheritate from another Constructor
-Actor.prototype.sleep = Object.create(Person.prototype);
-Actor.prototype = new Person;
+Actor.prototype = Object.create(Person.prototype);
+// Actor.prototype = new Person;
 
 /// assign a different constuctors.
 Actor.prototype.constructor = Actor;
+
+var leo = new Actor('leo', 40, 20);
  
 console.log(
-    andrew,luka
+    andrew,luka,leo
 );
 
 console.log(luka.sleep());
