@@ -2,7 +2,7 @@
 
     var board = document.getElementById('board');
     var racers = document.getElementsByClassName('racer');
-    var windowWidth = document.body.style.width;
+    var windowWidth = window.innerWidth;
 
     var racingCarLeft = 0;
     var motorBikeLeft = 0;
@@ -33,7 +33,6 @@
                 var randomColor = 'rgba(' + getRandomNumber(256) + ',' + getRandomNumber(256) + ',' + getRandomNumber(256) + getRandomNumber(256) + ')'
                 board.style.backgroundColor = randomColor;
             }
-            
         }
     )
 
@@ -42,6 +41,7 @@
         racers[1].style.left = motorBikeLeft + 'px';
         racers[2].style.left = policeCarLef + 'px';
         racers[3].style.left = tracktorLeft + 'px';
+        checkWinner();
     }
 
     document.getElementById('boost-button').addEventListener('click',
@@ -49,21 +49,44 @@
         event.stopPropagation();
         racingCarLeft += getRandomNumber();
         racers[0].style.left = racingCarLeft + 'px';
+        checkWinner();
     })
 
     function checkWinner(){
-        if (windowWidth  == racingCarLeft){
-
+        var winner;
+        console.log(windowWidth);
+        console.log(racingCarLeft);
+        if (windowWidth  < racingCarLeft){
+            winner = 'Racecar'
+            displayWinner();
         }
-        else if (windowWidth  == motorBikeLeft){
-
+        else if (windowWidth  < motorBikeLeft){
+            winner = 'Motorbike'
+            displayWinner();
         }
-        else if (windowWidth  == policeCarLef){
-
+        else if (windowWidth  < policeCarLef){
+            winner = 'PoliceCar'
+            displayWinner();
         }
-        else if (windowWidth  == tracktorLeft){
-
+        else if (windowWidth  < tracktorLeft){
+            winner = 'Tracktor'
+            displayWinner();
         }
+
+        function displayWinner(){
+            console.log('creating popup');
+            var text = document.createTextNode(winner + 'Was the winner');
+            var popup = document.createElement('div');
+            popup.style.width = '200px';
+            popup.style.height = '200px';
+            popup.style.display = 'absolute';
+            popup.style.top  = '50%';
+            popup.style.left  = '50%';
+            popup.style.zIndex = '100'
+            document.body.appendChild(popup);
+            popup.appendChild(text);
+        }
+        
     }
 
 })();
