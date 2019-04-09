@@ -6,6 +6,28 @@
 // background color should not change at all.
 
 (function () {
+
+    var parent = document.getElementById('parent');
+    var child = document.getElementById('child');
+
+    parent.onmousedown = outerBoxMouseDown;
+    child.onmousedown = innerBoxMouseDown;
+
+    function outerBoxMouseDown(event){
+        parent.style.backgroundColor = getRandomColor();
+        event.stopPropagation();
+    }
+
+    function innerBoxMouseDown(event){
+        child.style.backgroundColor = getRandomColor();
+        event.stopPropagation()
+    }
+
+    function getRandomColor(){
+      var hex = "#" + Math.random().toString(16).slice(2 ,8);
+      console.log(hex);
+      return hex;
+    }
     
     
 })();
