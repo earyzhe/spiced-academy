@@ -36,7 +36,7 @@
         overlay.classList.add('unsetting');
         overlay.classList.remove('on');
 
-        setTimeout(makehidden , 1000);
+        setTimeout(makehidden , 500);
         
         function makehidden(){
 
