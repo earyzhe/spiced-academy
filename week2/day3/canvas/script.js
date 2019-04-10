@@ -6,10 +6,12 @@
     var context2 = canvas2.getContext('2d');
     var moves = [bodyone, bodyTwo, bodyThree];
     var ref = 0;
+    var dancing = false
+
 
     console.log(moves);
     document.addEventListener("keydown", moveBody);
-    document.addEventListener('mousedown', dance);
+    // document.addEventListener('mousedown', dance);
     bodyone();
     drawParent();
 
@@ -120,21 +122,26 @@
     }
 
     function dance(){
-        for (var i = 0; i < moves.length; i++) {
+        console.log(' In dance ');
+
+        dancing = !dancing;
+
+        danceRepeat()
+
+        function danceRepeat(){
+            if(dancing){
                 setTimeout(function() {
-                    moves[i]();
-                    ref ++
-                    drawChildCanvas();
+
+                    moveBody
+                    danceRepeat();
                 }, 1000);
-            if ( i = moves.length ){
-                i = 0;
+                if ( i = moves.length ){
+                    i = 0;
+                }
+                console.log(i);
             }
-            console.log(i);
         }
     }
-
-   
-
 
     function moveBody(event){
         var eventKey = event.key;
