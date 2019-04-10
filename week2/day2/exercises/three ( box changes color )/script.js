@@ -16,9 +16,9 @@
 
     function changeColor(event){
         console.log(event);
-        var color = generateRandomColor()
+        var color = generateRandomColor();
         console.log(color);
-        box.style.backgroundColor = generateRandomColor()
+        box.style.backgroundColor = color;
     }
 
     function generateRandomColor(){
