@@ -30,6 +30,7 @@ function open-project {
     code -n /Users/earyzhe/Desktop/salt-code
 }
 
+
 function create-day {
   
   read -r -p 'Week number: ' weeknum
@@ -58,6 +59,57 @@ function create-day {
 }
 
 
+function show-help {
+
+  echo " - deploy";
+  echo "adds, commits withh your chosen method and pushes to a remote repo ";
+  echo "  ";
+
+  echo " - log";
+  echo " shows salt git logs";
+  echo "  ";
+
+  echo " - open";
+  echo "USE '. ' before calling this command. eg '. salt open' ";
+  echo "opens changes directory to salt" ;
+  echo "  ";
+
+  echo " - class";
+  echo "Opens the class repo in Chrome";
+  echo "  ";
+
+  echo " - repo";
+  echo "opens the remote repo in Chrome";
+  echo "  ";
+
+  echo " - project";
+  echo "opens the project in VS code";
+  echo "  ";
+
+  echo " - mkday";
+  echo "Makes a new day and week if needed";
+  echo "  ";
+
+  echo " - help";
+  echo "Shows help";
+  echo "  ";
+
+
+
+  echo  "Functions";
+
+  echo  " - mkpg";
+  echo  " creates a directory file for a webpage with html,css and js files";
+
+  echo  " - mkfls";
+  echo  " creates html, css and js files within the current directory";
+  
+  echo  " - deploy";
+  echo  " Adds commits and pushs to the remote origin";
+
+  echo  " - edit";
+  echo  " opens the web bash file to edit it";
+}
 
 if [ $1 = deploy ]
 then
@@ -80,6 +132,9 @@ then
 elif [ $1 = mkday ]
 then
   create-day
+elif [ $1 = help ]
+then
+  show-help
 else
    echo "Unknown command"
 fi
