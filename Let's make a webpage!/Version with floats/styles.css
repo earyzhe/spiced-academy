@@ -215,7 +215,7 @@ button:hover{
 }
 
 body{
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 h1 {
@@ -317,6 +317,7 @@ b {
         text-align: center;
         max-width: 100%;
         width: 80%;
+        height: 200px;
         display: inline-block;
         position: relative;
         border-radius: 30px;
@@ -324,12 +325,15 @@ b {
 
 
     .text-column {
+        top: 100px;
         width: 80%;
         min-width: 0;
         text-align: center;
         display: block;
-        position: relative;
+        position: absolute;
         padding: 10px;
+        transform: translateX(-50%);
+        left: 50%;
     }
 
     .feature-img {
@@ -337,10 +341,16 @@ b {
         height: 60px;
         width: 60px;
         text-align: center;
-        position: relative;
+        position: absolute;
         margin-left: auto;
         margin-right: auto;
-        display: inline-block;
+        display: absolute;
+        transform: translateX(-50%);
+        left: 50%;
+    }
+
+    .feature:hover img{
+        transform: translateX(-50%) translateY(3px);
     }
 
     .features {
@@ -350,8 +360,8 @@ b {
         width: 90%;
         padding-top: 20px;
         padding-bottom: 70px;
-        padding-left: 8%;
-        padding-right: 2%;
+        padding-left: 5%;
+        padding-right: 5%;
         display: inline-block;
         text-align: center;
         margin-bottom: -4px
