@@ -1,0 +1,108 @@
+*{
+    margin: 0px;
+    padding: 0px;
+
+}
+
+p{
+    align-self: auto;
+}
+
+nav{
+    /* flex propeties */
+
+    /* Default main axis is Horizontal("row") */
+    display: flex;
+
+    /* CSS properties that start with "align" , will align items along the cross axis */
+
+    /* justify tells links where to align along the main axis*/
+   
+    justify-content: flex-end;
+    
+     /* flex-start is the default */
+     /* flex-end */
+     /* space-around */
+     /* space-between */
+     /* space-evenly */
+     /*  */
+}
+
+.nav-link {
+    font-size: 32px;
+    font-family: 'Helvetica Neue';
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin: 0 2%;
+}
+
+
+main{
+    display: flex;
+    /* wraps to multiple rows */
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    height: 2000px;
+    /* Flex box relies on white space to work; */
+
+    align-items: center
+}
+
+img{
+    min-width: 100%;
+    height: 90%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+
+.card{
+    /* flex grow is a proportion */
+    flex-grow: 1;
+    height: 400px;
+    max-width: 300px;
+    border: 3px solid black;
+    display: inline-block;
+    text-align: center;
+}
+
+
+
+#one{
+        flex-grow: 100;
+}
+
+#two{
+    flex-grow: 50;
+}
+
+#three{
+    flex-grow: 80;
+}
+
+#four{
+    flex-grow: 10;
+}
+
+#five{
+    flex-grow: 20;
+}
+
+#six{
+    flex-grow: 40;
+}
+
+#seven{
+    flex-grow: 60;
+}
+
+#eigth{
+    flex-grow: 90;
+}
+
+#nine{
+    flex-grow: 55;
+}
+
+/* Some flex CSS propertiesd 
+will only work iff applied to flex-item */
