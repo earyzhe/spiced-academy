@@ -1,0 +1,48 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+}
+
+.pussy img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+#carosel{
+    position: relative;
+    height: 600px;
+    overflow: hidden;
+}
+
+.pussy{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    transform: translateX(100%);
+    transition-timing-function: ease-in;
+}
+
+.pussy.onScreen{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    transition-property: transform;
+    transition-duration: 1s;
+    transform: translateX(0%);
+    transition-timing-function: ease-in;
+}
+
+.pussy.exit{   
+    transition-property: transform; 
+    transition-duration: 1s;
+    transform: translateX(-100%);
+    transition-timing-function: ease-in;
+
+}
+
+
+
