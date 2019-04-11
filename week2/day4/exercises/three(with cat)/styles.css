@@ -2,3 +2,30 @@
     margin: 0px;
     padding: 0px;
 }
+
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main{
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    align-content: center;
+}
+
+header{
+    background-color: orange;
+    height: 70px;
+}
+
+footer{
+    background-color: pink;
+    height: 30px;
+}
+
+img{
+    align-self: center;
+}
