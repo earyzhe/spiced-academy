@@ -2,7 +2,7 @@
 
     var transitionIntervalMs = 3000;
     var transitionDurationMs = 1000;
-    var counter = 0
+    var counter = 1;
 
     // motion is from right to left with a duration of 5 seconds
     var pussyCats = document.getElementsByClassName('pussy');
@@ -12,6 +12,9 @@
     for (var i = 0; i < pussyCats.length; i++) {
         refArray.push(i);
     }
+    refArray.push(refArray.shift());
+    refArray.push(refArray.shift());
+    refArray.push(refArray.shift());
 
     setTimeout(rotate, transitionIntervalMs);
 
