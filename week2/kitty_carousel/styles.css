@@ -4,8 +4,6 @@
     position: relative;
 }
 
-
-
 nav{
     display: flex;
     position: relative;
@@ -22,9 +20,21 @@ nav{
     height: 10px;
     width: 10px;
     border: 2px solid white;
+    opacity: 0.8;
+    /* transition-property: opacity;
+    transition-duration: 1s; */
 }
 
 .dot:hover{
+    transform: scale(1.1);
+}
+
+.dot:active{
+    background-color: white;
+}
+
+.dot.on{
+
     background-color: white;
 }
 
