@@ -2,3 +2,60 @@
     margin: 0px;
     padding: 0px;
 }
+
+body{
+    display: flex;
+}
+
+.parent{
+    width: 200px;
+    height: 200px;
+    margin: 3px;
+    display: flex;
+}
+
+.child{
+    height: 100px;
+    width: 100px;
+}
+
+
+.one{
+    background-color: grey;
+    justify-content: flex-end;
+}
+
+.two{
+    background-color: black;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.three{
+    background-color: blue;
+    align-items: flex-end;
+}
+
+.four{
+    background-color: purple;
+}
+
+.parent .one{
+    background-color: orange;
+}
+
+.parent .two{
+    background-color: yellow;
+}
+
+.parent .three{
+    background-color: green;
+}
+
+.parent .four{
+    background-color: pink;
+}
+
+
+
+
