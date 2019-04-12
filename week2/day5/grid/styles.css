@@ -1,0 +1,29 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+
+#my-grid{
+    display: grid;
+    /* first row - second row */
+    grid-template-rows: 100px 200px;
+    /* 40% of the column ; fr = fraction of the remaining space */
+    grid-template-columns: 40% 1fr 2fr;
+}
+
+#my-grid div{
+    border: 1px dotted tomato
+}
+
+.x{
+    background-color: aqua;
+    grid-row: 2;
+    grid-column: 3;
+}
+
+.y{
+    background-color: red;
+    grid-row: 2;
+    grid-column: 1 / span 2;
+}

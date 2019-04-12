@@ -80,7 +80,6 @@ nav{
     height: 100%;
     width: 100%;
     transform: translateX(100%);
-    transition-timing-function: ease-in;
 }
 
 .pussy.onScreen{

@@ -1,0 +1,24 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: 70px 1fr 30px;
+}
+
+header{
+    background-color: orange;
+    height: 70px;
+}
+
+footer{
+    background-color: pink;
+    height: 30px;
+}
+
+main{
+
+}
