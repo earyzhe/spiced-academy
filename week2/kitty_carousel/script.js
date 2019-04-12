@@ -21,12 +21,8 @@
     startCarosel();
 
     function setupDots(){
-        // for (var i = 0; i < dots.length; i++) {
-        //     dots[i].addEventListener('click', dotClick);
-        // }
 
         for (var i = 0; i < dots.length; i++) {
-            // console.log(dots[i] + ' ' + event.target);
             (function (i) {
                 dots[i].addEventListener('click', function(){
                     if (counter != i && !transitioning){
@@ -34,6 +30,9 @@
                         clearTimeout(timer);
                         rotate(i);
                         event.stopPropagation();
+                    }
+                    else if ( transitioning ){
+
                     }
                 }); 
             })(i);
