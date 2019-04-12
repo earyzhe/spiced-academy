@@ -7,6 +7,7 @@
     var counter = 0;
     var timer;
     var transitioning = false;
+    var skipped;
 
     // Event delegation
     document.addEventListener('transitionend', removeCallback);
@@ -26,13 +27,14 @@
             (function (i) {
                 dots[i].addEventListener('click', function(){
                     if (counter != i && !transitioning){
-                        console.log( counter + ' is ' + ' and transitioning ' + transitioning);
                         clearTimeout(timer);
                         rotate(i);
                         event.stopPropagation();
                     }
                     else if ( transitioning ){
-
+                        if ( i != counter ){
+                            skipped = i;
+                        }
                     }
                 }); 
             })(i);
@@ -57,6 +59,7 @@
         if ( event.target.classList.contains("exit") ){
             event.target.classList.remove("exit");
             /// restart the function to resume the carosel;
+
             timer = setTimeout(rotate, transitionIntervalMs);
             transitioning = false;
         }
@@ -65,11 +68,19 @@
     function rotate(next) {        
         //move the photo from onscreen to exit.
         transitioning = true;
+
+        // apply classes to the current image
         pussyCats[counter].classList.add("exit");
         pussyCats[counter].classList.remove("onScreen");
+
         counter++;
-        
-        if ( next >= 0 ){
+
+        /// Apply skipped one here
+        if ( !isNaN(skipped) ){
+            counter = skipped;
+            skipped = undefined;
+        }
+        else if ( next >= 0 ){
             counter = next;
         }
         else{
