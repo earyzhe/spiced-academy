@@ -2,3 +2,63 @@
     margin: 0px;
     padding: 0px;
 }
+
+body{
+    display: inline-block;
+    justify-items: start;
+    align-content: start;
+}
+
+.parent{
+    height: 200px;
+    width: 200px;
+    display: inline-grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
+}
+
+.child{
+    border: 3px dotted red
+}
+
+.parent.one{
+    background-color: grey;
+}
+
+.child.one{
+    grid-row-start: 1;
+    grid-column-start: 2;
+    background-color: orange;
+}
+
+.parent.two{
+    background-color: black;
+}
+
+.child.two{ 
+    grid-row-start: 2;
+    grid-column-start: 2;
+    background-color: yellow;
+}
+
+.parent.three{
+    background-color: blue;
+    
+}
+
+.child.three{
+    grid-row-start: 2;
+    grid-column-start: 1;
+    background-color: green;
+}
+
+.parent.four{
+    grid-row-start: 1;
+    grid-column-start: 1;
+    background-color: purple;
+}
+
+.child.four{
+    background-color: pink;
+}
+
