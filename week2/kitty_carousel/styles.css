@@ -50,7 +50,7 @@ nav{
     opacity: 0;
     transition-property: opacity;
     transition-duration: 1s;
-    transition-delay: 0.3s
+    transition-delay: 0.2s
 }
 .inner.on{
     background-color: white;
