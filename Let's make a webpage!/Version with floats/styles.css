@@ -11,6 +11,8 @@
 .hero {
     position: relative;
     text-align: center;
+    justify-content: center;
+    align-content: center;
     font-size: 0;
 }
 
@@ -29,6 +31,7 @@
 }
 
 .get-started-button {
+    margin: 20px;
     text-align: center;
     display: inline-block;
     border: 2px solid #cc6600;
@@ -187,6 +190,29 @@
     opacity: 0.5;
 }
 
+/* overlay poping */
+
+#overlay-popup{
+     position: absolute;
+    background-color: black;
+    transition: opacity 0.5s; 
+    opacity: 0.0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    visibility: hidden;
+}
+
+#overlay-popup.unsetting{
+    visibility: unset;
+    opacity: 0.0;
+}
+
+#overlay-popup.on{
+    visibility: unset;
+    opacity: 0.5;
+}
+
 #drawer{
     width: 300px;
     height: 300px;
@@ -208,6 +234,62 @@
 #menu:active:hover{
     transform: scale(1.1);
     transform: translateY(4px);
+}
+
+#popup{
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    opacity: 0;
+    background-color: white;
+    z-index: 500;
+    border-radius: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: 1s;
+    transition-property: opacity;
+    transition-duration: 1;
+    transition-timing-function: ease-in-out;
+    transition-delay: 1;
+    vertical-align: 0;
+
+    position: absolute;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center; 
+}
+
+
+#popup > p{
+    padding: 20px;
+    text-align: center;
+}
+
+#popup.on{
+    visibility: unset;
+    opacity: 1;
+}
+
+.unsetting{
+    visibility: unset;
+    opacity: 0.0;
+}
+
+#close-popup{
+    width: 20px;
+    height:20px;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+#popup-right{
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
 }
 
 button{
@@ -237,11 +319,24 @@ h2 {
     margin-block-end: 0em;
 }
 
+h3{
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px;
+}
+
+h4{
+    font-size: 25px;
+    text-align: center
+}
+
 p {
     font-size: 20px;
     margin-block-start: 0em;
     margin-block-end: 0em;
 }
+
 
 img {
     filter: brightness(70%);
@@ -392,6 +487,7 @@ b {
         }
 
         .get-started-button {
+            margin: 5px;
             padding: 2px 30px;
             border-radius: 20px;
             font-size: 15px;
