@@ -1,82 +1,107 @@
 (function () {
 
-    var currentAnimationFrame = 0;
+    var bottomAnimationFrame = 0;
+    var topAnimationFrame = 0;
 
     // Top variables
     
-    $('headlines').on('mousenter', mouseOverHeadlinesTop);
-    $('headlines').on('mouseleave', mouseOutOfHeadlinesBottom);
+    var headlines = $('#headlines');
+    console.log(headlines);
+
+    headlines.on('mousenter', mouseOverHeadlinesTop);
+    headlines.on('mouseleave', mouseOutOfHeadlinesBottom);
     
-    var headlinesleft = $('headlines').offset('left');
-    var topLinks = $('top');
+    var headlinesOffsets = headlines.offset();
+    console.log(headlinesOffsets);
+    var headlinesleft = headlinesOffsets.left;
+    console.log('off set left ' + headlinesleft);
+    var topLinks = $('.top');
 
     moveTopElementLeft();
 
     // Top bar functions
 
-    function mouseOverHeadlinesTop(){
-        cancelAnimationFrame(currentAnimationFrame);
+    function mouseOverHeadlinesTop(e){
+        console.log('mouseOverHeadlinesTop');
+        cancelAnimationFrame(topAnimationFrame);
+        e.stopPropagation();
     }    
 
-    function mouseOutOfHeadlinesBottom(){
+    function mouseOutOfHeadlinesBottom(e){
+        console.log('mouseOutOfHeadlinesBottom');
         moveTopElementLeft();
+        e.stopPropagation();
     }
 
     function moveTopElementLeft(){
         headlinesleft --;
-        if (headlinesleft <= -topLinks[0].offsetWidth){
-            headlinesleft += topLinks[0].offsetWidth;
-            $('headlines').appendChild(topLinks[0]);
+        var element = $(topLinks).eq(0);
+        console.log(element);
+        var elementsWidth = element.width;
+        console.log(elementsWidth);
+        if (headlinesleft <= - elementsWidth){
+            headlinesleft += elementsWidth;
+            $('#headlines').appendChild($(topLinks).eq(0));
         }
-        $('headlines').css({
-            left : String(headlinesleft)
-        });
+        console.log('headlinesheadlinesleft);
+        $('#headlines').css({left : String(headlinesleft)});
         
-        currentAnimationFrame = requestAnimationFrame(moveTopElementLeft);
+        topAnimationFrame = requestAnimationFrame(moveTopElementLeft);
         if (headlinesleft < -1800 ){
             headlinesleft = 0;
         }
     }
 
+})();
+
+
     // Bottom variables
 
-    var headlinesBottom = $('bottom-headlines');
-    headlinesBottom.on('mouseenter' , mouseOverBottomHeadlines);
-    headlinesBottom.on('mouseleave' , mouseOutOfBottomHeadlines);
+    // var headlinesBottom = $('.bottom-headlines');
+    // headlinesBottom.on('mouseenter' , mouseOverBottomHeadlines);
+    // headlinesBottom.on('mouseleave' , mouseOutOfBottomHeadlines);
 
-    var headlinesRight =  0;
-    var bottomLinks = $('bottom');
+    // var headlinesRight =  0;
+    // var bottomLinks = $('.bottom');
 
-    moveBottomElementRight();
+    // moveBottomElementRight();
 
-    // Bottom bar functions
+    // // Bottom bar functions
 
-    function mouseOverBottomHeadlines(){
-        cancelAnimationFrame(currentAnimationFrame);
-    }    
+    // function mouseOverBottomHeadlines(e){
+    //     console.log('mouseOverBottomHeadlines');
+    //     cancelAnimationFrame(bottomAnimationFrame);
+    //     e.stopPropagation();
+    // }    
 
-    function mouseOutOfBottomHeadlines(){
-        moveBottomElementRight();
-    }
+    // function mouseOutOfBottomHeadlines(e){
+    //     console.log('mouseOutOfBottomHeadlines');
+    //     moveBottomElementRight();
+    //     e.stopPropagation();
+    // }
 
-    function moveBottomElementRight(){
-        headlinesRight --;
-        var rightHeadline = bottomLinks[bottomLinks.length - 1];
-
-        if (  headlinesRight === 0 - rightHeadline.offsetWidth ){
-            headlinesRight += rightHeadline.offsetWidth;
-            console.log('inserting');
-            headlinesBottom.insertBefore(rightHeadline, bottomLinks[0]);
-            console.log(headlinesBottom.children);
-        }
-        // console.log(headlinesRight + 'px' + headlinesBottom.children);
-        headlinesBottom.css({
-            right: String(headlinesRight)
-        });
+    // function moveBottomElementRight(){
+    //     headlinesRight --;
+    //     console.log(headlinesRight + ' is');
+    //     console.log(bottomLinks);
+    //     var rightHeadline = bottomLinks[bottomLinks.length - 1];
+    //     console.log(rightHeadline);
+    //     var rightHeadlineOffsetWidth = rightHeadline.offsetWidth;
+    //     console.log(rightHeadlineOffsetWidth);
+    //     console.log(headlinesRight === 0 - rightHeadlineOffsetWidth);
+    //     if (  headlinesRight === 0 - rightHeadlineOffsetWidth ){
+    //         headlinesRight += rightHeadlineOffsetWidth;
+    //         console.log('inserting ' + rightHeadline + ' ' + );
+    //         headlinesBottom.insertBefore(rightHeadline, $(bottomLinks)[0]);
+    //         console.log(headlinesBottom.children);
+    //     }
+    //     // console.log(headlinesRight + 'px' + headlinesBottom.children);
+    //     headlinesBottom.css({
+    //         right: headlinesRight + 'px'
+    //     });
         
-        currentAnimationFrame = requestAnimationFrame(moveBottomElementRight);
-        if (headlinesRight > 1800 ){
-            headlinesRight = 0 ;
-        }
-    }
-})();
+    //     bottomAnimationFrame = setTimeout(moveBottomElementRight,100);
+    //     if (headlinesRight > 1800 ){
+    //         headlinesRight = 0 ;
+    //     }
+    // }
