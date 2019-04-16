@@ -27,8 +27,6 @@
         event.stopPropagation();
     });
 
-  
-
     menu.addEventListener('mousedown', menuKeyPressed);
     body.addEventListener('mousedown', documentPressed);
     overlay.addEventListener('mousedown', overlayPressed);
@@ -41,14 +39,6 @@
     function welcomePopup(){
 
         overlayPopUp.addClass('on');
-
-        console.log(overlayPopUp.children());
-
-        overlayPopUp.children().each(function() { 
-            this.addClass('on');
-            console.log(this);
-        });
-        
         popup.addClass('on');
     }
 

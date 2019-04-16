@@ -193,7 +193,7 @@
 /* overlay poping */
 
 #overlay-popup{
-     position: absolute;
+    position: absolute;
     background-color: black;
     transition: opacity 0.5s; 
     opacity: 0.0;

@@ -1,8 +1,7 @@
 (function () {
 
-    var currentAnimationFrame = 0;
-
     // Top variables
+    var currentTopAnimationFrame = 0;
 
     var headlinesTop = document.getElementById('headlines');
     headlinesTop.onmouseenter = mouseOverHeadlinesTop;
@@ -15,11 +14,13 @@
 
     // Top bar functions
 
-    function mouseOverHeadlinesTop(){
-        cancelAnimationFrame(currentAnimationFrame);
+    function mouseOverHeadlinesTop(event){
+        console.log('mouseOverHeadlinesTop');
+        cancelAnimationFrame(currentTopAnimationFrame);
     }    
 
-    function mouseOutOfHeadlinesBottom(){
+    function mouseOutOfHeadlinesBottom(event){
+        console.log('mouseOutOfHeadlinesBottom');
         moveTopElementLeft();
     }
 
@@ -31,13 +32,14 @@
         }
         headlinesTop.style.left = headlinesleft + 'px';
         
-        currentAnimationFrame = requestAnimationFrame(moveTopElementLeft);
+        currentTopAnimationFrame = requestAnimationFrame(moveTopElementLeft);
         if (headlinesleft < -1800 ){
             headlinesleft = 0 + 'px';
         }
     }
 
     // Bottom variables
+    var currentBottomAnimationFrame = 0;
 
     var headlinesBottom = document.getElementById('bottom-headlines');
     headlinesBottom.onmouseenter = mouseOverBottomHeadlines;
@@ -51,7 +53,7 @@
     // Bottom bar functions
 
     function mouseOverBottomHeadlines(){
-        cancelAnimationFrame(currentAnimationFrame);
+        cancelAnimationFrame(currentBottomAnimationFrame);
     }    
 
     function mouseOutOfBottomHeadlines(){
@@ -71,7 +73,7 @@
         // console.log(headlinesRight + 'px' + headlinesBottom.children);
         headlinesBottom.style.right = headlinesRight + 'px';
         
-        currentAnimationFrame = requestAnimationFrame(moveBottomElementRight);
+        currentBottomAnimationFrame = requestAnimationFrame(moveBottomElementRight);
         if (headlinesRight > 1800 ){
             headlinesRight = 0 + 'px';
         }

@@ -6,16 +6,12 @@
     // Top variables
     
     var headlines = $('#headlines');
-    console.log(headlines);
-
-    headlines.on('mousenter', mouseOverHeadlinesTop);
-    headlines.on('mouseleave', mouseOutOfHeadlinesBottom);
-    
     var headlinesOffsets = headlines.offset();
-    console.log(headlinesOffsets);
     var headlinesleft = headlinesOffsets.left;
-    console.log('off set left ' + headlinesleft);
     var topLinks = $('.top');
+
+    headlines.mouseenter(mouseOverHeadlinesTop);
+    headlines.mouseleave(mouseOutOfHeadlinesTop);
 
     moveTopElementLeft();
 
@@ -27,24 +23,28 @@
         e.stopPropagation();
     }    
 
-    function mouseOutOfHeadlinesBottom(e){
-        console.log('mouseOutOfHeadlinesBottom');
+    function mouseOutOfHeadlinesTop(e){
+        console.log('mouseOutOfHeadlinesTop');
         moveTopElementLeft();
         e.stopPropagation();
     }
 
     function moveTopElementLeft(){
         headlinesleft --;
-        var element = $(topLinks).eq(0);
-        console.log(element);
-        var elementsWidth = element.width;
-        console.log(elementsWidth);
+        var elementsWidth = headlines.children().eq(0).width();
+        // console.log(headlinesleft);
+        // console.log(elementsWidth);
         if (headlinesleft <= - elementsWidth){
+            var insertingElement = headlines.children().eq(0);
+            console.log(insertingElement);
+            console.log('inserting top');
+            headlines.append(insertingElement);
+            // headlines.children().eq(0).remove();
+            console.log(headlines.children());
             headlinesleft += elementsWidth;
-            $('#headlines').appendChild($(topLinks).eq(0));
+            console.log(insertingElement);
         }
-        console.log('headlinesheadlinesleft);
-        $('#headlines').css({left : String(headlinesleft)});
+        headlines.css({left : headlinesleft});
         
         topAnimationFrame = requestAnimationFrame(moveTopElementLeft);
         if (headlinesleft < -1800 ){
@@ -52,56 +52,62 @@
         }
     }
 
+    // Bottom bar values
+
+    var headlinesBottom = $('#bottom-headlines');
+    headlinesBottom.on('mouseenter' , mouseOverBottomHeadlines);
+    headlinesBottom.on('mouseleave' , mouseOutOfBottomHeadlines);
+
+    var headlinesRight =  0;
+    var bottomLinks = $('.bottom');
+
+    moveBottomElementRight();
+    console.log(headlines.children());
+    console.log(headlinesBottom.children());
+    console.log( bottomLinks );
+
+
+    // Bottom bar functions
+
+    function mouseOverBottomHeadlines(e){
+        console.log('mouseOverBottomHeadlines');
+        cancelAnimationFrame(bottomAnimationFrame);
+        e.stopPropagation();
+    }    
+
+    function mouseOutOfBottomHeadlines(e){
+        console.log('mouseOutOfBottomHeadlines');
+        moveBottomElementRight();
+        e.stopPropagation();
+    }
+
+    function moveBottomElementRight(){
+
+        headlinesRight --;
+
+        var rightHeadline = bottomLinks[bottomLinks.length - 1];
+        var rightHeadlineOffsetWidth = rightHeadline.width();
+
+        if (  headlinesRight === 0 - rightHeadlineOffsetWidth ){
+            // headlinesRight += rightHeadlineOffsetWidth;
+            
+            var farRightElementIndex = bottomLinks.children().length - 1;
+            var elementToInsert = bottomLinks.eq(farRightElementIndex);
+            headlinesBottom.prepend(bottomLinks.eq(elementToInsert));
+            console.log(elementToInsert);
+            console.log(headlinesBottom.children());
+            // old code
+            // headlinesBottom.insertBefore(rightHeadline, );
+        }
+        headlinesBottom.css({right: headlinesRight });
+        
+        bottomAnimationFrame = requestAnimationFrame(moveBottomElementRight,100);
+        if (headlinesRight > 1800 ){
+            headlinesRight = 0 ;
+        }
+    }
 })();
 
 
-    // Bottom variables
 
-    // var headlinesBottom = $('.bottom-headlines');
-    // headlinesBottom.on('mouseenter' , mouseOverBottomHeadlines);
-    // headlinesBottom.on('mouseleave' , mouseOutOfBottomHeadlines);
-
-    // var headlinesRight =  0;
-    // var bottomLinks = $('.bottom');
-
-    // moveBottomElementRight();
-
-    // // Bottom bar functions
-
-    // function mouseOverBottomHeadlines(e){
-    //     console.log('mouseOverBottomHeadlines');
-    //     cancelAnimationFrame(bottomAnimationFrame);
-    //     e.stopPropagation();
-    // }    
-
-    // function mouseOutOfBottomHeadlines(e){
-    //     console.log('mouseOutOfBottomHeadlines');
-    //     moveBottomElementRight();
-    //     e.stopPropagation();
-    // }
-
-    // function moveBottomElementRight(){
-    //     headlinesRight --;
-    //     console.log(headlinesRight + ' is');
-    //     console.log(bottomLinks);
-    //     var rightHeadline = bottomLinks[bottomLinks.length - 1];
-    //     console.log(rightHeadline);
-    //     var rightHeadlineOffsetWidth = rightHeadline.offsetWidth;
-    //     console.log(rightHeadlineOffsetWidth);
-    //     console.log(headlinesRight === 0 - rightHeadlineOffsetWidth);
-    //     if (  headlinesRight === 0 - rightHeadlineOffsetWidth ){
-    //         headlinesRight += rightHeadlineOffsetWidth;
-    //         console.log('inserting ' + rightHeadline + ' ' + );
-    //         headlinesBottom.insertBefore(rightHeadline, $(bottomLinks)[0]);
-    //         console.log(headlinesBottom.children);
-    //     }
-    //     // console.log(headlinesRight + 'px' + headlinesBottom.children);
-    //     headlinesBottom.css({
-    //         right: headlinesRight + 'px'
-    //     });
-        
-    //     bottomAnimationFrame = setTimeout(moveBottomElementRight,100);
-    //     if (headlinesRight > 1800 ){
-    //         headlinesRight = 0 ;
-    //     }
-    // }
+   
