@@ -8,22 +8,21 @@
     var items = document.getElementsByClassName('item');
     var overlay = document.getElementById('overlay');
     var closePopUpButton = $('#close-popup');
-    var overlayPopUp = $('#overlay-popup');
     var popup = $('#popup');
 
     // Executed when the user presses the close button
     closePopUpButton.click(function(event){
-        overlayPopUp.addClass('unsetting');
+        overlay.classList.add('unsetting');
         popup.addClass('unsetting');
-        overlayPopUp.removeClass('on');
+        overlay.classList.remove('on');
         popup.removeClass('on');
         event.stopPropagation();
     });
 
     // Executed after the modal popup has fully dismissed
-    overlayPopUp.on('transitionend', function(event){
+    overlay.addEventListener('transitionend', function(event){
         popup.removeClass('unsetting');
-        overlayPopUp.removeClass('unsetting');
+        overlay.classList.remove('unsetting');
         event.stopPropagation();
     });
 
@@ -38,7 +37,7 @@
 
     function welcomePopup(){
 
-        overlayPopUp.addClass('on');
+        overlay.classList.add('on');
         popup.addClass('on');
     }
 
@@ -65,12 +64,6 @@
         overlay.classList.add('unsetting');
         overlay.classList.remove('on');
 
-        setTimeout(makehidden , 500);
-        
-        function makehidden(){
-
-            overlay.classList.remove('unsetting');
-        }
     }
 
     function itemPressed(event){
