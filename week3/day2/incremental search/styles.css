@@ -1,0 +1,23 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+input{
+    display: block;
+    border:1px black solid
+}
+
+.results{
+    display: block;
+    border:1px black solid
+}
+
+.result{
+
+}
+
+.highlighted{
+    background-color: grey;
+    color: blue;
+}
