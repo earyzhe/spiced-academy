@@ -5,13 +5,13 @@
 
     // Top variables
     
-    var headlines = $('#headlines');
-    var headlinesOffsets = headlines.offset();
-    var headlinesleft = headlinesOffsets.left;
+    var topHeadlines = $('#headlines');
+    var headlinesOffsets = topHeadlines.offset();
+    var topHeadlinesleft = headlinesOffsets.left;
     var topLinks = $('.top');
 
-    headlines.mouseenter(mouseOverHeadlinesTop);
-    headlines.mouseleave(mouseOutOfHeadlinesTop);
+    topHeadlines.mouseenter(mouseOverHeadlinesTop);
+    topHeadlines.mouseleave(mouseOutOfHeadlinesTop);
 
     moveTopElementLeft();
 
@@ -30,25 +30,17 @@
     }
 
     function moveTopElementLeft(){
-        headlinesleft --;
-        var elementsWidth = headlines.children().eq(0).width();
-        // console.log(headlinesleft);
-        // console.log(elementsWidth);
-        if (headlinesleft <= - elementsWidth){
-            var insertingElement = headlines.children().eq(0);
-            console.log(insertingElement);
-            console.log('inserting top');
-            headlines.append(insertingElement);
-            // headlines.children().eq(0).remove();
-            console.log(headlines.children());
-            headlinesleft += elementsWidth;
-            console.log(insertingElement);
+        topHeadlinesleft --;
+
+        if (topHeadlinesleft <= - topLinks.eq(0).width()){
+            topHeadlinesleft += topLinks.eq(0).width();
+            topHeadlines.append(topLinks.eq(0));
         }
-        headlines.css({left : headlinesleft});
+        topHeadlines.css({left : topHeadlinesleft});
         
         topAnimationFrame = requestAnimationFrame(moveTopElementLeft);
-        if (headlinesleft < -1800 ){
-            headlinesleft = 0;
+        if (topHeadlinesleft < -1800 ){
+            topHeadlinesleft = 0;
         }
     }
 
@@ -62,7 +54,7 @@
     var bottomLinks = $('.bottom');
 
     moveBottomElementRight();
-    console.log(headlines.children());
+    console.log(topHeadlines.children());
     console.log(headlinesBottom.children());
     console.log( bottomLinks );
 

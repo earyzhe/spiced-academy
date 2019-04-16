@@ -14,12 +14,12 @@
 
     // Top bar functions
 
-    function mouseOverHeadlinesTop(event){
+    function mouseOverHeadlinesTop(){
         console.log('mouseOverHeadlinesTop');
         cancelAnimationFrame(currentTopAnimationFrame);
     }    
 
-    function mouseOutOfHeadlinesBottom(event){
+    function mouseOutOfHeadlinesBottom(){
         console.log('mouseOutOfHeadlinesBottom');
         moveTopElementLeft();
     }
