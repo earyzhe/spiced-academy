@@ -8,23 +8,33 @@
     var topHeadlines = $('#headlines');
     var headlinesOffsets = topHeadlines.offset();
     var topHeadlinesleft = headlinesOffsets.left;
-    var topLinks = $('.top');
 
     topHeadlines.mouseenter(mouseOverHeadlinesTop);
     topHeadlines.mouseleave(mouseOutOfHeadlinesTop);
 
+    // Bottom bar values
+
+    var bottomHeadlines = $('#bottom-headlines');
+    bottomHeadlines.on('mouseenter' , mouseOverBottomHeadlines);
+    bottomHeadlines.on('mouseleave' , mouseOutOfBottomHeadlines);
+
+    var bottomHeadlinesRight =  0;
+    var bottomLinks = $('.bottom');
+
+
     moveTopElementLeft();
+
+    moveBottomElementRight();
+
 
     // Top bar functions
 
     function mouseOverHeadlinesTop(e){
-        console.log('mouseOverHeadlinesTop');
         cancelAnimationFrame(topAnimationFrame);
         e.stopPropagation();
     }    
 
     function mouseOutOfHeadlinesTop(e){
-        console.log('mouseOutOfHeadlinesTop');
         moveTopElementLeft();
         e.stopPropagation();
     }
@@ -32,9 +42,9 @@
     function moveTopElementLeft(){
         topHeadlinesleft --;
 
-        if (topHeadlinesleft <= - topLinks.eq(0).width()){
-            topHeadlinesleft += topLinks.eq(0).width();
-            topHeadlines.append(topLinks.eq(0));
+        if (topHeadlinesleft <= - topHeadlines.children().eq(0).outerWidth()){
+            topHeadlinesleft += topHeadlines.children().eq(0).outerWidth();
+            topHeadlines.append(topHeadlines.children().eq(0));
         }
         topHeadlines.css({left : topHeadlinesleft});
         
@@ -44,58 +54,38 @@
         }
     }
 
-    // Bottom bar values
-
-    var headlinesBottom = $('#bottom-headlines');
-    headlinesBottom.on('mouseenter' , mouseOverBottomHeadlines);
-    headlinesBottom.on('mouseleave' , mouseOutOfBottomHeadlines);
-
-    var headlinesRight =  0;
-    var bottomLinks = $('.bottom');
-
-    moveBottomElementRight();
-    console.log(topHeadlines.children());
-    console.log(headlinesBottom.children());
-    console.log( bottomLinks );
-
 
     // Bottom bar functions
 
     function mouseOverBottomHeadlines(e){
-        console.log('mouseOverBottomHeadlines');
         cancelAnimationFrame(bottomAnimationFrame);
         e.stopPropagation();
     }    
 
     function mouseOutOfBottomHeadlines(e){
-        console.log('mouseOutOfBottomHeadlines');
         moveBottomElementRight();
         e.stopPropagation();
     }
 
     function moveBottomElementRight(){
 
-        headlinesRight --;
+        bottomHeadlinesRight --;
 
-        var rightHeadline = bottomLinks[bottomLinks.length - 1];
-        var rightHeadlineOffsetWidth = rightHeadline.width();
+        var rightHeadline = bottomHeadlines.children().eq(bottomLinks.length - 1);
 
-        if (  headlinesRight === 0 - rightHeadlineOffsetWidth ){
-            // headlinesRight += rightHeadlineOffsetWidth;
-            
-            var farRightElementIndex = bottomLinks.children().length - 1;
-            var elementToInsert = bottomLinks.eq(farRightElementIndex);
-            headlinesBottom.prepend(bottomLinks.eq(elementToInsert));
-            console.log(elementToInsert);
-            console.log(headlinesBottom.children());
-            // old code
-            // headlinesBottom.insertBefore(rightHeadline, );
+        if (  bottomHeadlinesRight  <= -rightHeadline.outerWidth() ){ 
+
+            bottomHeadlinesRight += rightHeadline.outerWidth();
+            var elementToInsert = bottomHeadlines.children().eq(bottomHeadlines.children().length - 1 );
+            bottomHeadlines.prepend(elementToInsert);
+
         }
-        headlinesBottom.css({right: headlinesRight });
+        
+        bottomHeadlines.css({right: bottomHeadlinesRight });
         
         bottomAnimationFrame = requestAnimationFrame(moveBottomElementRight,100);
-        if (headlinesRight > 1800 ){
-            headlinesRight = 0 ;
+        if (bottomHeadlinesRight > 1800 ){
+            bottomHeadlinesRight = 0 ;
         }
     }
 })();
