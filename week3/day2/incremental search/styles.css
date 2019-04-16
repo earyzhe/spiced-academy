@@ -3,18 +3,30 @@
     padding: 0px;
 }
 
-input{
-    display: block;
-    border:1px black solid
+#search{
+    width: 200px;
+    margin: 20px
 }
 
-.results{
+input{
     display: block;
-    border:1px black solid
+    border: 1px black solid;
+    width: calc(100% - 20px);
+    padding: 10px;
+}
+
+#results{
+    display: block;
+    border:1px black solid;
+}
+
+.hide{
+    visibility: hidden;
 }
 
 .result{
-
+    width: calc(100% - 20px);
+    padding: 10px;
 }
 
 .highlighted{

@@ -9,9 +9,9 @@
     * remove the highlight class from the result that has it if there is one
     * add the highlight class to the event target
 
-3. mousedown (individual result)
+<!-- 3. mousedown (individual result)
     * take the text contained by the element with the highlight class (it's the event target) and set it as the value of the text field
-    * empty and/or hide the results -->
+    * empty and/or hide the results --> -->
 
 <!-- 4. keydown (text field)
     * if the down arrow is pressed
