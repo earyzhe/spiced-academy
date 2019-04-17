@@ -1,0 +1,38 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background-color: grey
+}
+
+#textbox{
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 50vw;
+    height: 50vw;
+    border-radius: 10%;
+    border: 3px solid black;
+    padding: 20px;
+    margin: 50px;
+    background-color: white;
+    box-sizing: border-box;
+}
+
+textarea{
+    align-self: center;
+    display: relative;
+    width: 80%;
+    height: 80%;
+    padding: 20px;
+    margin: 50px;
+    border-color: white
+}
