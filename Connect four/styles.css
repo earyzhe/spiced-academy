@@ -33,5 +33,14 @@ body{
 .row{
     height: 100px;
     border: 3px solid black;
+    border-radius: 50%;
     font-size: 0;
+}
+
+.yellow{
+    background-color: yellow;
+}
+
+.red{
+    background-color: red;
 }

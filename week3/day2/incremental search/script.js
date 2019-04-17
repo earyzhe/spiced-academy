@@ -116,8 +116,8 @@
         }
         else if ( resultsHaveHighlightClass() ){
             var index = highlightedResultIndex();
-            resultsNode.children().eq(index).removeClass(classNames.highlighted);
-            resultsNode.children().eq(index - 1).addClass(classNames.highlighted);
+            resultsNode.children().eq(index).removeClass(classNames.highlighted)
+                .prev().addClass(classNames.highlighted);
         }
         // No result has highlight class
         else {
@@ -139,14 +139,13 @@
 
     function 
     downArrowPressed(){
-
         if ( lastResultIsHighlighted() ){
             return;
         }
         else if ( resultsHaveHighlightClass() ){
             var index = highlightedResultIndex();
-            resultsNode.children().eq(index).removeClass(classNames.highlighted);
-            resultsNode.children().eq(index + 1).addClass(classNames.highlighted);
+            resultsNode.children().eq(index).removeClass(classNames.highlighted)
+                .next().addClass(classNames.highlighted);
         }
         // No result has highlight class
         else {
@@ -159,7 +158,6 @@
     }
 
     function highlightedResultIndex(){
-
         for (var i = 0; i < resultsNode.children().length; i++) {
             if ( resultsNode.children().eq(i).hasClass(classNames.highlighted )){
                 return i;
