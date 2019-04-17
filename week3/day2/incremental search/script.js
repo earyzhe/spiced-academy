@@ -52,7 +52,7 @@
         // event.stopPropagation();
     }
 
-    function findMatches(event){
+    function findMatches(){
 
         resultsNode.removeClass(classNames.hide);
         resultsNode.empty();
@@ -77,7 +77,7 @@
         }
 
         if ( matches.length <= 0 ){
-            matches.push( '' );
+            return;
         }
 
         var resultsHtml = '';
@@ -92,14 +92,8 @@
         }
     }
 
-    function unfocus(event){
+    function unfocus(){
         resultsNode.addClass(classNames.hide);
-    }
-    
-    function focus(event){
-        // console.log(resultsNode);
-        // console.log(resultsNode.classNames());
-        // resultsNode.removeClass((classNames.hide));
     }
 
     function mouseOverResult(event){
@@ -143,7 +137,8 @@
         return highlightedResult.text();
     }
 
-    function downArrowPressed(){
+    function 
+    downArrowPressed(){
 
         if ( lastResultIsHighlighted() ){
             return;
@@ -174,7 +169,7 @@
 
     function lastResultIsHighlighted(){
 
-        var lastResultIsHighlighted = false;
+        var lastResultIsHighlighted =  false;
         var lastIndex = resultsNode.children().length - 1;
         if ( resultsNode.children().eq(lastIndex).hasClass(classNames.highlighted )){
             lastResultIsHighlighted = true;
