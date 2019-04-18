@@ -5,10 +5,7 @@
 
     $('.slot').on('mouseup', function (event) {
 
-        var clickedSlot = $(event.target);
         var column = $(event.target).parent();
-        console.log(clickedSlot.index());
-
         var winner;
 
         // Add slot
@@ -70,7 +67,56 @@
         // Horizontal check
         var horizontalWin = bottomSlot ? horizontalCheck(currentSlot) : horizontalCheck(currentSlot.prev());
 
-        return verticalWin || horizontalWin;
+        // Cross check
+        var crossWin = bottomSlot ? crossCheck(currentSlot) : crossCheck(currentSlot.prev());
+
+        return verticalWin || horizontalWin || crossWin;
+    }
+
+    function crossCheck(slot){
+        
+        var tally = 0;
+        var tests = [];
+        var currentSlotIndex = slot.index();
+        var currentColumnIndex = slot.parent().index();
+
+        var forLoopStartingIndex = currentColumnIndex - (connectionAmount + 1);
+        var startSlotIndex = currentSlotIndex - (connectionAmount + 1);
+
+        // Go thought each column
+        for (var columnIndex = forLoopStartingIndex; columnIndex < $('.column').length; columnIndex++) {
+            const column = $('.column')[columnIndex];
+
+            var slotWithinColumn = $(column).children().eq(startSlotIndex);
+
+            if (isRedTurn && slotWithinColumn.hasClass('red') || !isRedTurn && slotWithinColumn.hasClass('yellow')) {
+                tests.push(true);
+            }
+            else {
+                tests.push(false);
+            }
+            startSlotIndex ++;
+        }
+
+        var forLoopEndingIndex = currentColumnIndex + (connectionAmount + 1);
+        var endingSlotIndex = currentSlotIndex + (connectionAmount + 1);
+
+        for (var columnIndex = forLoopEndingIndex; columnIndex < $('.column').length; columnIndex++) {
+            const column = $('.column')[columnIndex];
+
+            var slotTwoWithinColumn = $(column).children().eq(endingSlotIndex);
+
+            if (isRedTurn && slotTwoWithinColumn.hasClass('red') || !isRedTurn && slotTwoWithinColumn.hasClass('yellow')) {
+                tests.push(true);
+            }
+            else {
+                tests.push(false);
+            }
+            endingSlotIndex --;
+        }
+        if (tally >= connectionAmount) {
+            return true;
+        }
     }
 
 
@@ -79,13 +125,11 @@
         var tally = 0;
         var tests = [];
         var currentSlotIndex = slot.index();
-        //  == 0 ? 0 : slot.index() + 1;
 
         for (var columnIndex = 0; columnIndex < $('.column').length; columnIndex++) {
             const column = $('.column')[columnIndex];
 
             var slotWithinColumn = $(column).children().eq(currentSlotIndex);
-            console.log( ' current slot index ' + currentSlotIndex);
 
             if (isRedTurn && slotWithinColumn.hasClass('red') || !isRedTurn && slotWithinColumn.hasClass('yellow')) {
                 tests.push(true);
@@ -101,13 +145,16 @@
                     if (tests[t]) {
                         tally++;
                     }else{
+                        break;
                     }
                 }
-                break;
             }
-        }
-        if (tally >= connectionAmount) {
-            return true;
+            console.log(tally);
+            if (tally >= connectionAmount) {
+                return true;
+            }else{
+                tally = 0;
+            }
         }
     }
 
