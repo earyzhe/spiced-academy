@@ -3,11 +3,12 @@
     var connectionAmount = 4;
     var isRedTurn = false;
 
-    $('.slot').on('mousedown', function (event) {
+    $('.slot').on('mouseup', function (event) {
 
         var clickedSlot = $(event.target);
         var column = $(event.target).parent();
         console.log(clickedSlot.index());
+
         var winner;
 
         // Add slot
@@ -25,7 +26,7 @@
                     slot.addClass('yellow');
                 }
 
-                winner = calulateWinner(slot);
+                winner = calulateWinner(slot, true);
                 break;
             }
             // find current slot
@@ -42,6 +43,7 @@
                 break;
             }
         }
+        
 
         if (winner) {
             console.log((isRedTurn ? 'Red ' : 'Yellow ') + 'wins');
@@ -60,28 +62,30 @@
     });
 
 
-    function calulateWinner(currentSlot) {
+    function calulateWinner(currentSlot, bottomSlot) {
 
         // Vetical Check
         var verticalWin = verticalCheck(currentSlot);
 
         // Horizontal check
-        var horizontalWin = horizontalCheck(currentSlot);
+        var horizontalWin = bottomSlot ? horizontalCheck(currentSlot) : horizontalCheck(currentSlot.prev());
 
         return verticalWin || horizontalWin;
     }
 
 
-    function horizontalCheck(currentSlot) {
+    function horizontalCheck(slot) {
 
         var tally = 0;
         var tests = [];
+        var currentSlotIndex = slot.index();
+        //  == 0 ? 0 : slot.index() + 1;
 
         for (var columnIndex = 0; columnIndex < $('.column').length; columnIndex++) {
             const column = $('.column')[columnIndex];
 
-            var slotWithinColumn = $(column).children().eq(currentSlot.index());
-            // console.log( ' current slot index ' + currentSlot.index());
+            var slotWithinColumn = $(column).children().eq(currentSlotIndex);
+            console.log( ' current slot index ' + currentSlotIndex);
 
             if (isRedTurn && slotWithinColumn.hasClass('red') || !isRedTurn && slotWithinColumn.hasClass('yellow')) {
                 tests.push(true);
@@ -125,7 +129,6 @@
                 break;
             }
         }
-        console.log(tally);
         return tally == connectionAmount;
     }
 })();
