@@ -3,14 +3,20 @@
     var connectionAmount = 4;
     var isRedTurn = false;
 
-    $('.column').mousedown(function (event) {
+    $('.slot').on('mousedown', function (event) {
 
-        var column = $(event.currentTarget);
+        var clickedSlot = $(event.target);
+        var column = $(event.target).parent();
+        clickedSlot.index();
+        var winner;
+
+        // Add slot
 
         for (var i = 0; i < column.children().length; i++) {
 
             var slot = column.children().eq(i);
 
+            // find add to the las tindex if no slots are filled
             if (i == column.children().length - 1 && !slot.hasClass('yellow') && !slot.hasClass('red')) {
                 if (isRedTurn) {
                     slot.addClass('red');
@@ -18,10 +24,12 @@
                 else {
                     slot.addClass('yellow');
                 }
+
+                winner = calulateWinner(slot);
                 break;
             }
-
-            if (slot.hasClass('yellow') || slot.hasClass('red')) {
+            // find current slot
+            else if (slot.hasClass('yellow') || slot.hasClass('red')) {
 
                 if (isRedTurn) {
                     slot.prev().addClass('red');
@@ -29,15 +37,20 @@
                 else {
                     slot.prev().addClass('yellow');
                 }
+
+                winner = calulateWinner(slot);
                 break;
             }
         }
-        calulateWinner();
+
+        if (winner) {
+            console.log((isRedTurn ? 'Red ' : 'Yellow ') + 'wins');
+        }
 
         var totalSlotsFilled = $('.yellow').length + $('.red').length;
         var totalSlots = $('.slot').length;
 
-        if ( totalSlotsFilled == totalSlots ) {
+        if (totalSlotsFilled == totalSlots) {
             console.log('board filled');
         }
 
@@ -46,60 +59,76 @@
 
     });
 
-    function calulateWinner() {
 
-        var columns = $('.column');
+    function calulateWinner(currentSlot) {
 
         // Vetical Check
-        verticalCheck(columns);
+        var verticalWin = verticalCheck(currentSlot.prev());
 
         // Horizontal check
-        var multiArray = [];
+        var horizontalWin = horizontalCheck(currentSlot);
 
-        for (let columnIndex = 0; columnIndex < columns.length; columnIndex++) {
-            const column =  $(columns[columnIndex]);
+        return verticalWin || horizontalWin;
+    }
 
-            multiArray.push([]);
 
-            for (let rowIndex = 0; rowIndex < column.children().length; rowIndex++) {
-                const slot = column.children().eq(rowIndex);
-                if (slot.hasClass('red')) {
-                    multiArray[columnIndex][rowIndex] = 'red';
-                }
-                else if (slot.hasClass('yellow')) {
-                    multiArray[columnIndex][rowIndex] = 'yellow';
-                }
-                else{
-                    multiArray[columnIndex][rowIndex] = 'no match';
-                }
+    function horizontalCheck(currentSlot) {
+
+        var tally = 0;
+        var tests = [];
+
+        for (var columnIndex = 0; columnIndex < $('.column').length; columnIndex++) {
+            const column = $('.column')[columnIndex];
+
+            var slotWithinColumn = $(column).children().eq(currentSlot.index());
+
+            if (isRedTurn && slotWithinColumn.hasClass('red') || !isRedTurn && slotWithinColumn.hasClass('yellow')) {
+                tests.push(true);
             }
-            // console.log(multiArray);
+            else {
+                tests.push(false);
+            }
+        }
+
+
+        for (var testsIndex = 0; testsIndex < tests.length; testsIndex++) {
+            if (tests[testsIndex] == true) {
+                console.log('in here');
+                for (var t = testsIndex; t < tests.length; t++) {
+                    if (tests[t]) {
+                        console.log('adding to tally' + tests[t]);
+                        tally++;
+                    }else{
+                        console.log(tests[t]);                        
+                    }
+                }
+                break;
+            }
+        }
+        console.log(tests);
+
+        console.log('tests length ' + tests.length);
+        console.log(tally);
+        if (tally >= connectionAmount) {
+            return true;
         }
     }
 
-    function verticalCheck(columns) {
-        for (let index = 0; index < columns.length; index++) {
-            const column = $(columns[index]);
-            var red = 0, yellow = 0;
 
-            for (let subIndex = 0; subIndex < column.children().length; subIndex++) {
-                const slot = column.children().eq(subIndex);
+    function verticalCheck(slot) {
 
-                if (slot.hasClass('red')) {
-                    red++;
-                }
-                else if (slot.hasClass('yellow')) {
-                    yellow++;
-                }
+        var tally = 0;
+        for (let index = slot.index(); index < slot.parent().children().length; index++) {
+
+            var testingSlot = slot.parent().children().eq(index);
+
+            if (isRedTurn && testingSlot.hasClass('red') || !isRedTurn && testingSlot.hasClass('yellow')) {
+                tally++;
             }
-            if (yellow == connectionAmount) {
-                console.log('Yellow wins');
-                return;
-            }
-            else if (red == connectionAmount) {
-                console.log('Red wins');
-                return;
+            else {
+                break;
             }
         }
+        return tally == connectionAmount;
     }
 })();
