@@ -9,7 +9,6 @@
         testValue += pass;
     }
 
-    console.log(testValue);
 
     $('.slot').on('mouseup', function (event) {
 
@@ -80,36 +79,75 @@
         return verticalWin || horizontalWin || crossWin;
     }
 
-    function crossCheck(slot){
-        
-        var tally = 0;
+    function crossCheck(slot){  
+        var testOnePass = bottomToTop(slot); 
+        var testTwoPass = topToBottom(slot);
+
+        return testOnePass;
+    }
+
+    function topToBottom(slot){
         var testval = '';
         var currentSlotIndex = slot.index();
         var column = slot.parent();
         var currentColumnIndex = column.index();
         
         var columnStartingIndex =  currentColumnIndex;
-        
         var startSlotIndex = currentSlotIndex;
 
+        // set the starting point of the test 
+        while (startSlotIndex != column.children().length - 1 && columnStartingIndex != 0  ){
+            startSlotIndex --;
+            columnStartingIndex --;
+        }
+        
+        // Go thought each column
+        console.log('startSlotIndex ' + startSlotIndex);
+        console.log('columnStartingIndex ' + columnStartingIndex);
+        
+        for (var columnIndex = columnStartingIndex; columnIndex < $('.column').length; columnIndex ++) {
+            if (startSlotIndex < column.children().length){
+            
+                const column = $('.column')[columnIndex];
+                
+                var slotWithinColumn = $(column).children().eq(startSlotIndex);
+                var red = isRedTurn && slotWithinColumn.hasClass('red');
+                
+                if (isRedTurn && slotWithinColumn.hasClass('red') || !isRedTurn && slotWithinColumn.hasClass('yellow')) {
+                    testval += pass;
+                }
+                else {
+                    testval += fail;
+                }
+                console.log('slot index is ' + startSlotIndex + ' and colum index is ' + columnIndex);
+                console.log(red);
+                startSlotIndex ++;
+            }
+        }
+        console.log(testval);
+        return testval.includes(testValue);
+    }
+
+    function bottomToTop(slot){
+        var testval = '';
+        var currentSlotIndex = slot.index();
+        var column = slot.parent();
+        var currentColumnIndex = column.index();
+        
+        var columnStartingIndex =  currentColumnIndex;
+        var startSlotIndex = currentSlotIndex;
+
+        // set the starting point of the test 
         while (startSlotIndex != column.children().length && columnStartingIndex != 0  ){
             startSlotIndex ++;
             columnStartingIndex --;
-            console.log('here');
         }
-
-        console.log("slot Index " + currentSlotIndex);
-        console.log('col index ' + currentColumnIndex);
         
         // Go thought each column
         for (var columnIndex = columnStartingIndex; columnIndex < $('.column').length; columnIndex++) {
             const column = $('.column')[columnIndex];
 
             var slotWithinColumn = $(column).children().eq(startSlotIndex);
-            // console.log("slot Index " + startSlotIndex);
-            // console.log('col index ' + columnIndex);
-            // console.log('slotINDEX ' + slotWithinColumn.index() + ' in column ' + slotWithinColumn.parent().index());
-            // console.log(isRedTurn && slotWithinColumn.hasClass('red'));
 
             if (isRedTurn && slotWithinColumn.hasClass('red') || !isRedTurn && slotWithinColumn.hasClass('yellow')) {
                 testval += pass;
@@ -119,28 +157,7 @@
             }
             startSlotIndex --;
         }
-
-        console.log(testval);
-
-        // var forLoopEndingIndex = currentColumnIndex + (connectionAmount + 1);
-        // var endingSlotIndex = currentSlotIndex + (connectionAmount + 1);
-
-        // for (var colIndex = forLoopEndingIndex; colIndex < $('.column').length; colIndex++) {
-        //     const column = $('.column')[colIndex];
-
-        //     var slotTwoWithinColumn = $(column).children().eq(endingSlotIndex);
-
-        //     if (isRedTurn && slotTwoWithinColumn.hasClass('red') || !isRedTurn && slotTwoWithinColumn.hasClass('yellow')) {
-        //         tests.push(true);
-        //     }
-        //     else {
-        //         tests.push(false);
-        //     }
-        //     endingSlotIndex --;
-        // }
-        // if (tally >= connectionAmount) {
-        //     return true;
-        // }
+        return testval.includes(testValue);
     }
 
 
