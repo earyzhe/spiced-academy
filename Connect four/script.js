@@ -4,6 +4,7 @@
     var isRedTurn = false;
 
     $('.column').mousedown(function (event) {
+
         var column = $(event.currentTarget);
 
         for (var i = 0; i < column.children().length; i++) {
@@ -32,8 +33,17 @@
             }
         }
         calulateWinner();
+
+        var totalSlotsFilled = $('.yellow').length + $('.red').length;
+        var totalSlots = $('.slot').length;
+
+        if ( totalSlotsFilled == totalSlots ) {
+            console.log('board filled');
+        }
+
         isRedTurn = !isRedTurn;
         $("h1").text(isRedTurn ? 'Red turn' : 'Yellow turn');
+
     });
 
     function calulateWinner() {
@@ -67,7 +77,6 @@
         }
     }
 
-
     function verticalCheck(columns) {
         for (let index = 0; index < columns.length; index++) {
             const column = $(columns[index]);
@@ -93,5 +102,4 @@
             }
         }
     }
-
 })();
