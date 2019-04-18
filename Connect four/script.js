@@ -80,11 +80,15 @@
         var currentSlotIndex = slot.index();
         var currentColumnIndex = slot.parent().index();
 
-        var forLoopStartingIndex = currentColumnIndex - (connectionAmount + 1);
-        var startSlotIndex = currentSlotIndex - (connectionAmount + 1);
+        var columnStartingIndex = currentColumnIndex - (connectionAmount - 1);
+        var startSlotIndex = currentSlotIndex + (connectionAmount - 1);
 
+        console.log("forLoopStartingIndex " + columnStartingIndex);
+        console.log(currentSlotIndex);
+        console.log("startSlotIndex " + startSlotIndex);
+        
         // Go thought each column
-        for (var columnIndex = forLoopStartingIndex; columnIndex < $('.column').length; columnIndex++) {
+        for (var columnIndex = columnStartingIndex; columnIndex < $('.column').length; columnIndex++) {
             const column = $('.column')[columnIndex];
 
             var slotWithinColumn = $(column).children().eq(startSlotIndex);
@@ -149,7 +153,6 @@
                     }
                 }
             }
-            console.log(tally);
             if (tally >= connectionAmount) {
                 return true;
             }else{
