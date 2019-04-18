@@ -1,7 +1,15 @@
 (function () {
 
-    var connectionAmount = 4;
     var isRedTurn = false;
+    var connectionAmount = 4;
+    var pass = 'x';
+    var fail = 'f';
+    var testValue = '';
+    for (let n = 0; n < connectionAmount; n++) {
+        testValue += pass;
+    }
+
+    console.log(testValue);
 
     $('.slot').on('mouseup', function (event) {
 
@@ -40,7 +48,6 @@
                 break;
             }
         }
-        
 
         if (winner) {
             console.log((isRedTurn ? 'Red ' : 'Yellow ') + 'wins');
@@ -76,51 +83,64 @@
     function crossCheck(slot){
         
         var tally = 0;
-        var tests = [];
+        var testval = '';
         var currentSlotIndex = slot.index();
-        var currentColumnIndex = slot.parent().index();
+        var column = slot.parent();
+        var currentColumnIndex = column.index();
+        
+        var columnStartingIndex =  currentColumnIndex;
+        
+        var startSlotIndex = currentSlotIndex;
 
-        var columnStartingIndex = currentColumnIndex - (connectionAmount - 1);
-        var startSlotIndex = currentSlotIndex + (connectionAmount - 1);
+        while (startSlotIndex != column.children().length && columnStartingIndex != 0  ){
+            startSlotIndex ++;
+            columnStartingIndex --;
+            console.log('here');
+        }
 
-        console.log("forLoopStartingIndex " + columnStartingIndex);
-        console.log(currentSlotIndex);
-        console.log("startSlotIndex " + startSlotIndex);
+        console.log("slot Index " + currentSlotIndex);
+        console.log('col index ' + currentColumnIndex);
         
         // Go thought each column
         for (var columnIndex = columnStartingIndex; columnIndex < $('.column').length; columnIndex++) {
             const column = $('.column')[columnIndex];
 
             var slotWithinColumn = $(column).children().eq(startSlotIndex);
+            // console.log("slot Index " + startSlotIndex);
+            // console.log('col index ' + columnIndex);
+            // console.log('slotINDEX ' + slotWithinColumn.index() + ' in column ' + slotWithinColumn.parent().index());
+            // console.log(isRedTurn && slotWithinColumn.hasClass('red'));
 
             if (isRedTurn && slotWithinColumn.hasClass('red') || !isRedTurn && slotWithinColumn.hasClass('yellow')) {
-                tests.push(true);
+                testval += pass;
             }
             else {
-                tests.push(false);
+                testval += fail;
             }
-            startSlotIndex ++;
+            startSlotIndex --;
         }
 
-        var forLoopEndingIndex = currentColumnIndex + (connectionAmount + 1);
-        var endingSlotIndex = currentSlotIndex + (connectionAmount + 1);
+        console.log(testval);
 
-        for (var columnIndex = forLoopEndingIndex; columnIndex < $('.column').length; columnIndex++) {
-            const column = $('.column')[columnIndex];
+        // var forLoopEndingIndex = currentColumnIndex + (connectionAmount + 1);
+        // var endingSlotIndex = currentSlotIndex + (connectionAmount + 1);
 
-            var slotTwoWithinColumn = $(column).children().eq(endingSlotIndex);
+        // for (var colIndex = forLoopEndingIndex; colIndex < $('.column').length; colIndex++) {
+        //     const column = $('.column')[colIndex];
 
-            if (isRedTurn && slotTwoWithinColumn.hasClass('red') || !isRedTurn && slotTwoWithinColumn.hasClass('yellow')) {
-                tests.push(true);
-            }
-            else {
-                tests.push(false);
-            }
-            endingSlotIndex --;
-        }
-        if (tally >= connectionAmount) {
-            return true;
-        }
+        //     var slotTwoWithinColumn = $(column).children().eq(endingSlotIndex);
+
+        //     if (isRedTurn && slotTwoWithinColumn.hasClass('red') || !isRedTurn && slotTwoWithinColumn.hasClass('yellow')) {
+        //         tests.push(true);
+        //     }
+        //     else {
+        //         tests.push(false);
+        //     }
+        //     endingSlotIndex --;
+        // }
+        // if (tally >= connectionAmount) {
+        //     return true;
+        // }
     }
 
 
