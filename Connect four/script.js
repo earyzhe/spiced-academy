@@ -7,7 +7,7 @@
 
         var clickedSlot = $(event.target);
         var column = $(event.target).parent();
-        clickedSlot.index();
+        console.log(clickedSlot.index());
         var winner;
 
         // Add slot
@@ -63,7 +63,7 @@
     function calulateWinner(currentSlot) {
 
         // Vetical Check
-        var verticalWin = verticalCheck(currentSlot.prev());
+        var verticalWin = verticalCheck(currentSlot);
 
         // Horizontal check
         var horizontalWin = horizontalCheck(currentSlot);
@@ -81,6 +81,7 @@
             const column = $('.column')[columnIndex];
 
             var slotWithinColumn = $(column).children().eq(currentSlot.index());
+            // console.log( ' current slot index ' + currentSlot.index());
 
             if (isRedTurn && slotWithinColumn.hasClass('red') || !isRedTurn && slotWithinColumn.hasClass('yellow')) {
                 tests.push(true);
@@ -90,25 +91,17 @@
             }
         }
 
-
         for (var testsIndex = 0; testsIndex < tests.length; testsIndex++) {
             if (tests[testsIndex] == true) {
-                console.log('in here');
                 for (var t = testsIndex; t < tests.length; t++) {
                     if (tests[t]) {
-                        console.log('adding to tally' + tests[t]);
                         tally++;
                     }else{
-                        console.log(tests[t]);                        
                     }
                 }
                 break;
             }
         }
-        console.log(tests);
-
-        console.log('tests length ' + tests.length);
-        console.log(tally);
         if (tally >= connectionAmount) {
             return true;
         }
@@ -118,7 +111,10 @@
     function verticalCheck(slot) {
 
         var tally = 0;
-        for (let index = slot.index(); index < slot.parent().children().length; index++) {
+
+        var startIndex = slot.index() == 0 ? 0 : slot.index() - 1;
+
+        for (let index = startIndex; index < slot.parent().children().length; index++) {
 
             var testingSlot = slot.parent().children().eq(index);
 
@@ -129,6 +125,7 @@
                 break;
             }
         }
+        console.log(tally);
         return tally == connectionAmount;
     }
 })();
