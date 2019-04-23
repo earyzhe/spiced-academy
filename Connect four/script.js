@@ -9,7 +9,6 @@
         testValue += pass;
     }
 
-
     $('.slot').on('mouseup', function (event) {
 
         var column = $(event.target).parent();
@@ -50,6 +49,8 @@
 
         if (winner) {
             console.log((isRedTurn ? 'Red ' : 'Yellow ') + 'wins');
+            showPopup( 'Victory', (isRedTurn ? 'Red ' : 'Yellow ') + 'wins');
+            // winner-popup
         }
 
         var totalSlotsFilled = $('.yellow').length + $('.red').length;
@@ -60,9 +61,47 @@
         }
 
         isRedTurn = !isRedTurn;
-        $("h1").text(isRedTurn ? 'Red turn' : 'Yellow turn');
+        $("#player").text(isRedTurn ? 'Red turn' : 'Yellow turn');
 
     });
+
+    $('button').on('mouseup', function (event) {
+        event.stopPropagation();
+        
+        $('#model-popup').removeClass('show');
+        $('#model-popup').addClass('hide');
+
+        $('#overlay').removeClass('show');
+        $('#overlay').addClass('hide');
+
+        var slots = $('.slot');
+        console.log(slots);
+
+        for (var i = 0; i < slots.length; i++) {
+            var element = $(slots[i]);
+
+            if( element.hasClass('yellow')){
+                element.removeClass('yellow');
+            }
+            
+            if( element.hasClass('red')){
+                element.removeClass('red');
+            } 
+        }
+    });
+
+    $('*').on('transitionend', function (event) {
+        if ($(event.target).hasClass('hide')){
+            $(event.target).removeClass('hide');
+        }
+    });
+
+    function showPopup(title, message){
+        $('#overlay').addClass('show');
+        $('#model-popup').addClass('show');
+        $('#model-popup').children().eq(0).text(title);
+        $('#model-popup').children().eq(1).text(message);
+    }
 
 
     function calulateWinner(currentSlot, bottomSlot) {
@@ -79,12 +118,14 @@
         return verticalWin || horizontalWin || crossWin;
     }
 
+
     function crossCheck(slot){  
         var testOnePass = bottomToTop(slot); 
         var testTwoPass = topToBottom(slot);
 
-        return testOnePass;
+        return testOnePass || testTwoPass;
     }
+
 
     function topToBottom(slot){
         var testval = '';
@@ -102,16 +143,12 @@
         }
         
         // Go thought each column
-        console.log('startSlotIndex ' + startSlotIndex);
-        console.log('columnStartingIndex ' + columnStartingIndex);
-        
         for (var columnIndex = columnStartingIndex; columnIndex < $('.column').length; columnIndex ++) {
             if (startSlotIndex < column.children().length){
             
                 const column = $('.column')[columnIndex];
                 
                 var slotWithinColumn = $(column).children().eq(startSlotIndex);
-                var red = isRedTurn && slotWithinColumn.hasClass('red');
                 
                 if (isRedTurn && slotWithinColumn.hasClass('red') || !isRedTurn && slotWithinColumn.hasClass('yellow')) {
                     testval += pass;
@@ -119,14 +156,13 @@
                 else {
                     testval += fail;
                 }
-                console.log('slot index is ' + startSlotIndex + ' and colum index is ' + columnIndex);
-                console.log(red);
+
                 startSlotIndex ++;
             }
         }
-        console.log(testval);
         return testval.includes(testValue);
     }
+
 
     function bottomToTop(slot){
         var testval = '';
