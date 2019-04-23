@@ -29,16 +29,25 @@
             // var jsData = JSON.parse(data);
             
             var jsData = data;
-        
+            
+            // // Version four
+            // for (var i = 0; i < data.length; i++) {
+            //     const element = jsData[i];
+            //     var link = element.href;
+            //     var headline = element.text;
+            //     var linkHTML =  '<a class="top" href=' + '"' + link + '"' + '>' + headline + '</a>';
+            //     $('#headlines').append(linkHTML);
+            //     $('#bottom-headlines').append(linkHTML); 
+            // }
+            
+            console.log(jsData);
+            // Version one
             for (const key in jsData) {
                 if (jsData.hasOwnProperty(key)) {
                     const element = jsData[key];
-                    console.log(element);
                     var link = element.href;
                     var headline = element.text;
                     var linkHTML =  '<a class="top" href=' + '"' + link + '"' + '>' + headline + '</a>';
-                    console.log(linkHTML);
-                    console.log($('#headlines'));
                     $('#headlines').append(linkHTML);
                     $('#bottom-headlines').append(linkHTML);  
                 }
