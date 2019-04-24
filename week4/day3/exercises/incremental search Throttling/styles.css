@@ -1,0 +1,35 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+#search{
+    width: 200px;
+    margin: 20px
+}
+
+input{
+    display: block;
+    border: 1px black solid;
+    width: calc(100% - 20px);
+    padding: 10px;
+}
+
+#results{
+    display: block;
+    border:1px black solid;
+}
+
+.hide{
+    visibility: hidden;
+}
+
+.result{
+    width: calc(100% - 20px);
+    padding: 10px;
+}
+
+.highlighted{
+    background-color: grey;
+    color: blue;
+}
