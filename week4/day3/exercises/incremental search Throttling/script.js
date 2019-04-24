@@ -25,7 +25,6 @@
     };
 
     // Event listeners
-    // documentNode.on(eventType.click, focus);
     documentNode.on(eventType.keydown , handleResultsKeyDown);
     documentNode.on(eventType.keyPressed , handleResultsKeyDown);
 
