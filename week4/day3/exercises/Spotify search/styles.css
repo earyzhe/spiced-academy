@@ -16,12 +16,22 @@ header{
     text-align: center;
 }
 
+a{  
+    flex-wrap: wrap;
+    text-align: center;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center; 
+    text-align: center;
+}
+
 section{
     background-color: darkgray;
     display: flex;
     justify-content: center;
     align-content: center;
     flex-direction: column;
+    text-align: center
 }
 
 img{
@@ -32,6 +42,27 @@ img{
     height: 200px;
     border-radius: 50%;
     box-shadow: -1px 1px 3px 1px rgba(0,0,0,0.53);
+}
+
+input{
+    padding: 5px;
+    border-radius: 10px;
+}
+
+h1{
+    margin: 20px;
+    padding: 20px;
+}
+
+h2{
+    display: block;
+    position: relative;
+    align-self: center;
+    padding: 20px;
+}
+
+h2.show{
+    padding: 20px  
 }
 
 h3{
@@ -53,16 +84,22 @@ h3{
     padding: 20px;
     box-shadow: -1px 1px 3px 1px rgba(0,0,0,0.53);
     border-radius: 50px;
-    align-self: center;
 }
 
-#results-state{
-
-}
 
 #more-button{
     display: inline-block;
     position: relative;
+    visibility: hidden;
+    width: 200px;
+    outline: none;
+    background-color: aquamarine;
+    margin: 50px;
+    border-radius: 20px;
+    padding: 10px 50px;
+    align-self: center;
+    text-align: center;
+    font-size: 30px;
 }
 
 #more-button:hover{
@@ -71,5 +108,8 @@ h3{
 
 #more-button:active{
     transform: translateY(-2px);
-    
+}
+
+#more-button.show{
+    visibility: visible;
 }
