@@ -25,7 +25,7 @@
     };
 
     // Event listeners
-    documentNode.on(eventType.click, focus);
+    // documentNode.on(eventType.click, focus);
     documentNode.on(eventType.keydown , handleResultsKeyDown);
     documentNode.on(eventType.keyPressed , handleResultsKeyDown);
 
@@ -61,43 +61,50 @@
         
         if ( inputVal != '' && inputVal != null){
 
-            timeout = setTimeout(  
+            try {
                 
-                $.ajax({
-                    // contentType: false,
-                    // processData: false,
-                    type: "GET",
-                    url: "https://flame-egg.glitch.me/",
-                    data: {
-                        q: inputVal
-                    },
-                    success: function (matches) {
-                        // console.log(matches);
-                        resultsNode.removeClass(classNames.hide);
-                        resultsNode.empty();
+                timeout = setTimeout(  
+                    function(){
+
+                            $.ajax({
+                                type: "GET",
+                                url: "https://flame-egg.glitch.me/",
+                                data: {
+                                    q: inputVal
+                                },
+                                success: function (matches) {
+                                    // console.log(matches);
+                                    resultsNode.removeClass(classNames.hide);
+                                    resultsNode.empty();
+                                    
+                                    if ( matches.length <= 0 ){ return; }
+                                    
+                                    if ( inputVal.substring(0, inputVal.length - 1) ==  matches[0].substring(0, inputVal.length - 1) ){
+                                        
+                                        var resultsHtml = '';
+                                        
+                                        for (var x = 0; x < matches.length; x++) {
+                                            resultsHtml += '<div class="result">' + matches[x] + '</div>';
+                                        }
+                                        resultsNode.append(resultsHtml);
+                                        
+                                        for (var y = 0; y < resultsNode.children().length; y++) {
+                                            addListeners(resultsNode.children().eq(y));
+                                        }
+                                    }
+                                    else{
+                                        console.log('Query took too long');
+                                    }
+                                }
+                            });
+                        }   
+                        ,
+                        // delay in ms    
+                        250);
                         
-                        if ( matches.length <= 0 ){ return; }
-                        
-                        if ( inputVal.substring(0, inputVal.length - 1) ==  matches[0].substring(0, inputVal.length - 1) ){
-                            
-                            var resultsHtml = '';
-                            
-                            for (var x = 0; x < matches.length; x++) {
-                                resultsHtml += '<div class="result">' + matches[x] + '</div>';
-                            }
-                            resultsNode.append(resultsHtml);
-                            
-                            for (var y = 0; y < resultsNode.children().length; y++) {
-                                addListeners(resultsNode.children().eq(y));
-                            }
-                        }
-                        else{
-                            console.log('Query took too long');
-                        }
-                    }
-                }),
-            // delay in ms    
-            250);
+                    } catch (e) {
+                console.log(e);
+            }
         }
     }
 
