@@ -2,18 +2,17 @@
 
     var next;
     var api = 'https://elegant-croissant.glitch.me/spotify';
+    var infinateScrolling = checkUriForParameters();
 
     $('#submit-button').on('click', function () {
+        submit();
+    });
 
-        $('section').empty();
-        
-        var userInput = $('input').val().toLowerCase();
-        var dropDownItem = $('select').val().toLowerCase();
-        var data = {
-            query: userInput,
-            type: dropDownItem
-        };
-        makeApiCall(api ,data, userInput, dropDownItem);
+
+    $(document).on('keydown', function (event) {
+        if(event.keyCode == 13){
+            submit();
+        }
     });
 
 
@@ -23,6 +22,19 @@
         makeApiCall(next, null, userInput, dropDownItem);
     });
 
+    function submit(){
+
+        $('section').empty();
+        
+        var userInput = $('input').val().toLowerCase();
+        var dropDownItem = $('select').val().toLowerCase();
+        var data = {
+            scroll: 'infinite',
+            query: userInput,
+            type: dropDownItem
+        };
+        makeApiCall(api ,data, userInput, dropDownItem);
+    }
 
     function makeApiCall(url ,data, userInput, dropDownItem, completion){
         $.ajax({
@@ -40,7 +52,7 @@
                 responseData = responseData.artists || responseData.albums;
 
                 if ( responseData.items.length > 0){
-                    $('#more-button').show();
+                    if (!infinateScrolling){ $('#more-button').show(); }
                     $('#results-state')
                         .text( dropDownItem.charAt(0).toUpperCase() + dropDownItem.slice(1) + ' results for ' + userInput)
                         .show();
@@ -57,11 +69,20 @@
                     const element = responseData.items[index];
                     addRowToScreen(element);
                 }
-                checkScroll();
+
+                if (infinateScrolling){ checkScroll(); }
+
                 if (completion){ completion();}
             }
-
         });
+    }
+
+
+    function checkUriForParameters(){
+        var url = window.location.href;
+        if (url.indexOf('scroll=infinite') >= 0 ){
+            return true;
+        }
     }
 
 
@@ -76,16 +97,17 @@
         var hasReachedBottom = (windowHeight + scrollPosition) >= pageHeight + bufferPix || (windowHeight + scrollPosition) >= pageHeight - bufferPix;
 
         if (hasReachedBottom){
+
             $('#more-button').hide();
             $('.loader').show();
 
-            clearTimeout(checkScrollTimer);
+            (checkScrollTimer);
 
             var userInput = $('input').val().toLowerCase();
             var dropDownItem = $('select').val().toLowerCase();       
             makeApiCall(next, null, userInput, dropDownItem, function(){
                 // one data has come get more
-                $('#more-button').show();
+                if ( !infinateScrolling){ $('#more-button').show();}
                 $('.loader').hide();
                 checkScroll();
             });
