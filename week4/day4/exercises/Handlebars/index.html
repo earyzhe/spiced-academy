@@ -11,7 +11,25 @@
 
     <h1>Authors</h1>
 
-    <section>
+    <section id="authors">
+            <script id="cards" type="text/x-handlebars-template">
+                {{#authors}}
+                    <div id="" class="profile">
+
+                        <img src={{photo}}>
+                        <h2>{{name}}</h2>
+                        <h3>{{born}} to {{died}}</h3>
+                        <h4>Selected Writings</h4>
+                        {{#selectedWritings}}
+                            <p> <em> "{{.}}",</em> </p>
+                        {{/selectedWritings}}
+                        <h4> <em>{{quote}}.</em> </h4>
+                
+                    </div>
+                {{/authors}}
+            </script>
+
+
 
         <div id="" class="profile">
 
@@ -28,9 +46,7 @@
 
     </section>
 
-    <script id="hello" type="text/x-handlebars-template">
-            <h1>Hello {{name}}!</h1>
-        </script>
+   
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

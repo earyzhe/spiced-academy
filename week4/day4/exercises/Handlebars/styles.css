@@ -42,6 +42,7 @@ section{
 }
 
 .profile{
+    margin: 30px;
     padding: 30px;
     border-radius: 25px;
     display: flex;
