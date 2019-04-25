@@ -17,39 +17,82 @@
     });
 
 
-    $('#more-button').on('click', function () {        
-        makeApiCall(next, null);
+    $('#more-button').on('click', function () { 
+        var userInput = $('input').val().toLowerCase();
+        var dropDownItem = $('select').val().toLowerCase();       
+        makeApiCall(next, null, userInput, dropDownItem);
     });
 
 
-    function makeApiCall(url ,data, userInput, dropDownItem){
-        console.log('url is ' + url);
+    function makeApiCall(url ,data, userInput, dropDownItem, completion){
         $.ajax({
             type: "GET",
             url: url,
             data: data,
+            timeout: 3000,
+            error: function(error){
+                console.log(error);
+                $('#more-button').hide();
+                $('.loader').hide();
+            },
             success: function (responseData) {
                 
                 responseData = responseData.artists || responseData.albums;
 
                 if ( responseData.items.length > 0){
-                    $('#more-button').addClass('show');
-                    $('#results-state').text( dropDownItem + ' results for ' + userInput);
+                    $('#more-button').show();
+                    $('#results-state')
+                        .text( dropDownItem.charAt(0).toUpperCase() + dropDownItem.slice(1) + ' results for ' + userInput)
+                        .show();
                     
                 }else{
-                    $('#more-button').removeClass('show');
+                    $('#more-button').hide();
+                    $('#results-state').hide();
                 }
 
                 // if next exists do the thing on the right
-                console.log(responseData.next);
                 next = responseData.next && responseData.next.replace('https://api.spotify.com/v1/search', url);
                 
                 for (let index = 0; index < responseData.items.length; index++) {
                     const element = responseData.items[index];
                     addRowToScreen(element);
                 }
+                checkScroll();
+                if (completion){ completion();}
             }
+
         });
+    }
+
+
+    var checkScrollTimer = 0;
+
+    function checkScroll(){
+        var windowHeight = $(window).height();
+        var pageHeight = $(document).height();
+        var scrollPosition = $(document).scrollTop();
+        var bufferPix = 50;
+
+        var hasReachedBottom = (windowHeight + scrollPosition) >= pageHeight + bufferPix || (windowHeight + scrollPosition) >= pageHeight - bufferPix;
+
+        if (hasReachedBottom){
+            $('#more-button').hide();
+            $('.loader').show();
+
+            clearTimeout(checkScrollTimer);
+
+            var userInput = $('input').val().toLowerCase();
+            var dropDownItem = $('select').val().toLowerCase();       
+            makeApiCall(next, null, userInput, dropDownItem, function(){
+                // one data has come get more
+                $('#more-button').show();
+                $('.loader').hide();
+                checkScroll();
+            });
+        }
+        else{
+            checkScrollTimer = setTimeout(checkScroll, 500);
+        }
     }
 
 

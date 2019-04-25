@@ -1,17 +1,19 @@
 *{
     margin: 0px;
     padding: 0px;
-    font-family: 'Courier New', Courier, monospace
+    font-family: 'Courier New', Courier, monospace;
 }
 
 body{
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
+    min-height: 100vh;
+    background-color: greenyellow;
 }
 
 header{
-    background-color: aliceblue;
+    background-color: purple;
     padding: 30px;
     text-align: center;
 }
@@ -26,17 +28,19 @@ a{
 }
 
 section{
+    padding: 30px;
     background-color: darkgray;
     display: flex;
     justify-content: center;
-    align-content: center;
+    align-items: center;
     flex-direction: column;
-    text-align: center
+    text-align: center;
 }
 
 img{
     margin: 0px 50px;
     display: inline-block;
+    vertical-align: middle;
     object-fit: cover;
     width: 200px;
     height: 200px;
@@ -49,9 +53,16 @@ input{
     border-radius: 10px;
 }
 
+select{
+    padding: 10px;
+    margin: 10px;
+    height: 25px;
+}
+
 h1{
     margin: 20px;
     padding: 20px;
+    font-size: 3em;
 }
 
 h2{
@@ -69,7 +80,8 @@ h3{
     display: inline-block;
     position: relative;
     align-self: center;
-    padding: 100px
+    padding: 100px;
+    width: 30vw;
 }
 
 .tile{
@@ -78,19 +90,24 @@ h3{
     flex-direction: row;
     justify-content: space-evenly;
     align-content: center;
+    align-items: center;
     align-self: center;
-    width: 80%;
+    width: 80vw;
     background-color: aqua;
     padding: 20px;
     box-shadow: -1px 1px 3px 1px rgba(0,0,0,0.53);
     border-radius: 50px;
 }
 
+#submit-button{
+    padding:5px;
+    border-radius: 5px;
+}
+
 
 #more-button{
-    display: inline-block;
+    display: none;
     position: relative;
-    visibility: hidden;
     width: 200px;
     outline: none;
     background-color: aquamarine;
@@ -113,3 +130,26 @@ h3{
 #more-button.show{
     visibility: visible;
 }
+
+#results-state{
+    display: none;
+}
+
+.loader {
+    display: none;
+    border: 16px solid orange; /* Light grey */
+    border-top: 16px solid red; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    margin: 50px;
+    padding: 10px 50px;
+    align-self: center;
+    text-align: center;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
