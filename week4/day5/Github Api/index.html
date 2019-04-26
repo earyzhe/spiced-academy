@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+
+        <header>
+            <h1>Github API</h1>
+            
+            <div id="search">
+                <input name="username" type="text" placeholder="Username" autocomplete="off">    
+                <input name="password" type="password" placeholder="Password" autocomplete="off">
+                <input name="user-to-search" type="text" placeholder="User to search" autocomplete="off">
+                <button id="go-button">Go!</button>
+            </div>
+        </header>
+
+
+        <section id="display">
+         
+        </section>
+
+        
+        <script id="cards" type="text/x-handlebars-template">
+
+            {{#items}}
+                
+                <div class="tile" data-id={{name}}>
+                    <div class="details">
+                        <img src={{owner/avatar_url}}>
+                        <h2>{{owner/login}}</h2>
+                        <h4>{{name}}</h4>
+                        <h4>{{description}}</h4>
+                    </div>
+                    <div class="commits-box">
+                        <!-- <h2>Commits</h2> -->
+                    </div>
+                </div>
+
+            {{/items}}
+        </script>
+
+        <script id="commits" type="text/x-handlebars-template">
+                
+                <div class="commit" id={{sha}}>
+                    <h2>{{commit/committer/name}}</h2>
+                    <h4>{{commit/committer/date}}</h4>
+                    <h4>{{commit/message}}</h4>
+                </div>
+
+        </script>
+        
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>

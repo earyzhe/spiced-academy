@@ -50,6 +50,8 @@
         ]
     };
 
+    console.log(authors);
+
     document.getElementById('authors').innerHTML = Handlebars.templates.cards(authors);
 
     
