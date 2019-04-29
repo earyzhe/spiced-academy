@@ -1,0 +1,22 @@
+
+{
+    "q": "Welcome to Spiced Academy would you like to enter?",
+    "answers": {
+        "yes": {
+            "q": "You try and enter the front door but you try for five minutes and cannot gain access. Do you ring the bell? Call for help? or try again?",
+            "answers": {
+                "bell": {
+                    "q": "David Answers the door, and says 'come in'. Do you choose to enter?",
+                    "answers": {
+                        "yes": "David guides you to the kitchen and tells you too look out the window. As you do, he takes the oppatunity and pushes you out the window. It was a trap. You lose",
+                        "no": "Good Job. you should not trust that David guy!"
+                    }
+                },
+                "help": "A class mate comes up behind you and lets you in. Congratulations, you made the encounter on time!",
+                "again": "Are you kidding? This door is not opening in your life time! You lose"
+                }
+            },
+            "no": "Dude you missed out, You gave up too early and missed your Spiced oppertunity! You lose!"
+        } 
+}
+       
