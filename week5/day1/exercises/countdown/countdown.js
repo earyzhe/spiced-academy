@@ -1,21 +1,29 @@
-var events = require('events');
 
 
-function CountDown(countdownSeconds){
+const events = require('events');
+
+function Countdown (countdownSeconds){
     this.seconds = countdownSeconds;
-    this.lister = new events.EventEmitter()
-    this.emit
-            if (this.seconds > 0 ){
-                setTimeout(function(){
-                    process.emit('secondElapsed')
-                } , this.seconds*1000);
-            }
-            console.log('The process is about to exit.');
+    // this.emit('secondElapsed', this.seconds);
+    this.tick = function(){
+        var self = this;
+        if (this.seconds > 0 ){
+            
+            setTimeout(function(){
+                self.emit('secondElapsed', self.seconds);
+
+                self.seconds --;
+                
+                self.tick();
+            },
+            1000);
+        }
+    };
+    this.tick();
 }
 
-CountDown.prototype = EventEmitter.prototype;
+/// Set the prototype of the countdown object to an Events emitter.
+Countdown.prototype = new events.EventEmitter();
 
-module.exports.CountDown = CountDown;
-
-// CountDown.protoType = Object.create(events.EventEmitter.protoType);
-
+/// Add the expotrs to the main js file.
+module.exports.CountDown = Countdown;
