@@ -107,14 +107,24 @@ header{
 .commit{
     width: calc(100% - 20px);
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 30px;
+}
+
+.att{
+    display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: flex-start;
-    margin: 20px;
+    align-items: center;
+    align-content: center;
 }
 
 .commits-box{
     display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
     /* padding: 20px; */
 }
 

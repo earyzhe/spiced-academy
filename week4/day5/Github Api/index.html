@@ -47,9 +47,12 @@
         <script id="commits" type="text/x-handlebars-template">
                 
                 <div class="commit" id={{sha}}>
-                    <h2>{{commit/committer/name}}</h2>
-                    <h4>{{commit/committer/date}}</h4>
-                    <h4>{{commit/message}}</h4>
+                        <div class="att">
+                            <h2>{{commit/committer/name}}</h2>
+                            <h4>{{commit/committer/date}}</h4>
+                        </div>
+                            <h4>{{commit/message}}</h4>
+                        </div>
                 </div>
 
         </script>
