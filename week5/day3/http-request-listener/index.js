@@ -1,5 +1,6 @@
 const http = require('http');
 const fs = require('fs');
+const url = require('url');
 
 // The call back is fired every time  a request is made
 //  A respose object is created with some meta data
@@ -16,8 +17,6 @@ const server = http.createServer(function(request, response){
         console.log('err: ', error);
     });
 
-
-
     // console.log(request.url);
     // console.log(request.headers);
     // console.log(`Request mothod: `, request.method);
@@ -25,14 +24,36 @@ const server = http.createServer(function(request, response){
     logRequest(request);
 
     if (request.method == "GET"){
+
+        var path = url.parse(request.url).pathname;
+        response.setHeader('content-type', 'text/html');
+        console.log(path);
+        if (path == '/requests.txt' ){
+            console.log('has Path');
+            response.statusCode = 200;
+            var fileStream = fs.createReadStream('requests.txt');
+            fileStream.pipe(response);
+            fileStream.on('data', (chunk) => {
+                console.log('emitting');
+                response.write(chunk);
+            });
+            fileStream.on('end', () => {
+                console.log('EndingStream');
+                response.end();
+            });
+        }   
+        else{
+            response.statusCode = 200;
+            response.end('<h1>Hello world</h1>');
+        }
+
+
+
         // console.log(`GET recieved. Lets send a response`);
         // Set the header data type and structure
-        response.setHeader('content-type', 'text/html');
         // set response header code
-        response.statusCode = 200;
         // response.write('<h1>Hello world</h1>');
         // Finish the repose 
-        response.end('<h1>Hello world</h1>');
     }
 
     if (request.method == "POST") {
@@ -43,7 +64,7 @@ const server = http.createServer(function(request, response){
             // console.log(chunk);
         });
         request.on("end", () => {
-            // console.log(data);
+            console.log(data);
             response.statusCode = 200;
             response.end();
             return;
