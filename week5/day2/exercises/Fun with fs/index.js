@@ -51,11 +51,9 @@ var jsonObj = JSON.stringify(test, null, 4);
 
 fs.writeFileSync('files.json', jsonObj);
 
-
 function mapSizes(pathToDir){
 
-    var result = fs.readdirSync( pathToDir, {withFileTypes:true, encoding: 'utf8'});
-    console.log(result);
+    var result = fs.readdirSync( pathToDir, { withFileTypes:true, encoding: 'utf8' });
     var newObj= {};
 
     if (result) {
@@ -77,7 +75,6 @@ function mapSizes(pathToDir){
         }
     }
     else{
-
         console.log(chalk.bgRed(result));
     }
     return newObj;
