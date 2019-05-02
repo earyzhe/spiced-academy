@@ -275,3 +275,51 @@ Method: GET
 URL: /favicon.ico
 Headers:  [object Object]
 
+
+Date: Thu May 02 2019 13:09:56 GMT+0200 (Central European Summer Time) 
+Method: GET
+URL: /
+Headers:  [object Object]
+
+
+Date: Thu May 02 2019 13:09:56 GMT+0200 (Central European Summer Time) 
+Method: GET
+URL: /favicon.ico
+Headers:  [object Object]
+
+
+Date: Thu May 02 2019 13:10:16 GMT+0200 (Central European Summer Time) 
+Method: POST
+URL: /
+Headers:  [object Object]
+
+
+Date: Thu May 02 2019 13:22:49 GMT+0200 (Central European Summer Time) 
+Method: GET
+URL: /
+Headers:  [object Object]
+
+
+Date: Thu May 02 2019 13:22:49 GMT+0200 (Central European Summer Time) 
+Method: GET
+URL: /favicon.ico
+Headers:  [object Object]
+
+
+Date: Thu May 02 2019 13:23:17 GMT+0200 (Central European Summer Time) 
+Method: POST
+URL: /
+Headers:  [object Object]
+
+
+Date: Thu May 02 2019 13:24:26 GMT+0200 (Central European Summer Time) 
+Method: POST
+URL: /
+Headers:  [object Object]
+
+
+Date: Thu May 02 2019 13:24:26 GMT+0200 (Central European Summer Time) 
+Method: GET
+URL: /www.google.com
+Headers:  [object Object]
+

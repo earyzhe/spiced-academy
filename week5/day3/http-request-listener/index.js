@@ -17,64 +17,58 @@ const server = http.createServer(function(request, response){
         console.log('err: ', error);
     });
 
-    // console.log(request.url);
-    // console.log(request.headers);
-    // console.log(`Request mothod: `, request.method);
-
     logRequest(request);
 
-    if (request.method == "GET"){
-
+    if (request.method == "GET" || request.method == "HEAD"){
+        console.log('GET');
         var path = url.parse(request.url).pathname;
         response.setHeader('content-type', 'text/html');
-        console.log(path);
+        response.statusCode = 200;
+
         if (path == '/requests.txt' ){
-            console.log('has Path');
             response.statusCode = 200;
             var fileStream = fs.createReadStream('requests.txt');
             fileStream.pipe(response);
             fileStream.on('data', (chunk) => {
-                console.log('emitting');
                 response.write(chunk);
             });
             fileStream.on('end', () => {
-                console.log('EndingStream');
                 response.end();
             });
         }   
         else{
-            response.statusCode = 200;
-            response.end('<h1>Hello world</h1>');
+            if (request.method == "GET"){
+                response.end(
+                    `<!doctype html>
+                    <html>
+                    <title>Hello World!</title>
+                    <p>Hello World!</p>
+                    </html>
+                `);
+            }
+            else if(request.method == "HEAD"){
+                response.end();
+            }
         }
-
-
-
-        // console.log(`GET recieved. Lets send a response`);
-        // Set the header data type and structure
-        // set response header code
-        // response.write('<h1>Hello world</h1>');
-        // Finish the repose 
     }
-
-    if (request.method == "POST") {
-        // console.log("post request");
-        let data = '';
-        request.on("data", (chunk) => {
-            data += chunk;
-            // console.log(chunk);
-        });
-        request.on("end", () => {
-            console.log(data);
-            response.statusCode = 200;
-            response.end();
-            return;
-        });
+    else if (request.method == "POST") {
+        response.setHeader("Location", 'www.google.com');
+        response.statusCode = 302;
+        response.end();
+    }
+    else{
+        response.statusCode = 405;
+        response.end();
     }
 });
 
 server.listen(8080, () => {console.log("I'm listening");});
 
 function logRequest(request){
+
+    // console.log(request.url);
+    // console.log(request.headers);
+    // console.log(`Request mothod: `, request.method);
 
     const logFilePath = "requests.txt";
 
