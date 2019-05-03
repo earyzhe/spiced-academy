@@ -19,7 +19,13 @@ const server = http.createServer(function(request, response){
 
     logRequest(request);
 
-    if (request.method == "GET" || request.method == "HEAD"){
+    if (request.method == "POST") {
+        console.log('in post');
+        response.setHeader("Location", 'www.google.com');
+        response.statusCode = 302;
+        response.end();
+    }
+    else if (request.method == "GET" || request.method == "HEAD"){
         console.log('GET');
         var path = url.parse(request.url).pathname;
         response.setHeader('content-type', 'text/html');
@@ -33,7 +39,7 @@ const server = http.createServer(function(request, response){
                 response.write(chunk);
             });
             fileStream.on('end', () => {
-                response.end();
+                response.end();            
             });
         }   
         else{
@@ -44,17 +50,12 @@ const server = http.createServer(function(request, response){
                     <title>Hello World!</title>
                     <p>Hello World!</p>
                     </html>
-                `);
+                `); 
             }
             else if(request.method == "HEAD"){
                 response.end();
             }
         }
-    }
-    else if (request.method == "POST") {
-        response.setHeader("Location", 'www.google.com');
-        response.statusCode = 302;
-        response.end();
     }
     else{
         response.statusCode = 405;
@@ -62,7 +63,7 @@ const server = http.createServer(function(request, response){
     }
 });
 
-server.listen(8080, () => {console.log("I'm listening");});
+server.listen(8080, () => { console.log("I'm listening"); });
 
 function logRequest(request){
 
@@ -72,8 +73,7 @@ function logRequest(request){
 
     const logFilePath = "requests.txt";
 
-    var data = `\nDate: ${new Date() } \nMethod: ${request.method}\nURL: ${request.url}\nHeaders:  ${request.headers}\n\n`;
-
+    var data = `\nDate: ${ new Date() } \nMethod: ${request.method}\nURL: ${request.url}\nHeaders:  ${request.headers}\n\n`;
 
     fs.appendFile(logFilePath, data, function (err) {
         if (err) throw err;

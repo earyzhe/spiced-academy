@@ -323,3 +323,87 @@ Method: GET
 URL: /www.google.com
 Headers:  [object Object]
 
+
+Date: Thu May 02 2019 15:47:57 GMT+0200 (Central European Summer Time) 
+Method: GET
+URL: /
+Headers:  [object Object]
+
+
+Date: Thu May 02 2019 15:47:59 GMT+0200 (Central European Summer Time) 
+Method: GET
+URL: /favicon.ico
+Headers:  [object Object]
+
+
+Date: Thu May 02 2019 15:48:20 GMT+0200 (Central European Summer Time) 
+Method: GET
+URL: /requests.txt
+Headers:  [object Object]
+
+
+Date: Thu May 02 2019 15:48:20 GMT+0200 (Central European Summer Time) 
+Method: GET
+URL: /favicon.ico
+Headers:  [object Object]
+
+
+Date: Thu May 02 2019 15:59:11 GMT+0200 (Central European Summer Time) 
+Method: PATCH
+URL: /
+Headers:  [object Object]
+
+
+Date: Thu May 02 2019 15:59:25 GMT+0200 (Central European Summer Time) 
+Method: POST
+URL: /
+Headers:  [object Object]
+
+
+Date: Thu May 02 2019 15:59:25 GMT+0200 (Central European Summer Time) 
+Method: GET
+URL: /www.google.com
+Headers:  [object Object]
+
+
+Date: Thu May 02 2019 16:04:11 GMT+0200 (Central European Summer Time) 
+Method: POST
+URL: /
+Headers:  [object Object]
+
+
+Date: Thu May 02 2019 16:04:11 GMT+0200 (Central European Summer Time) 
+Method: GET
+URL: /www.google.com
+Headers:  [object Object]
+
+
+Date: Thu May 02 2019 17:13:56 GMT+0200 (Central European Summer Time) 
+Method: POST
+URL: /
+Headers:  [object Object]
+
+
+Date: Thu May 02 2019 17:13:56 GMT+0200 (Central European Summer Time) 
+Method: GET
+URL: /www.google.com
+Headers:  [object Object]
+
+
+Date: Thu May 02 2019 17:15:07 GMT+0200 (Central European Summer Time) 
+Method: GET
+URL: /
+Headers:  [object Object]
+
+
+Date: Thu May 02 2019 17:15:10 GMT+0200 (Central European Summer Time) 
+Method: GET
+URL: /favicon.ico
+Headers:  [object Object]
+
+
+Date: Thu May 02 2019 17:15:15 GMT+0200 (Central European Summer Time) 
+Method: GET
+URL: /requests.txt
+Headers:  [object Object]
+
