@@ -1,41 +1,57 @@
 
 const http = require('http');
-const queryString = require('querystring');
-const url = require('url');
 const chalk = require('chalk');
 const fs = require('fs');
 const path = require('path');
 const port = 8080;
+const gener = require('./generator.js');
+
 
 const server = http.createServer();
 
-const files = getFiles(__dirname + '/projects' );
-// console.log(files);
 
 // Request object is a read stream and respose is a write stream
 server.on('request', (request, response) => {
 
-    switch (request.method) {
+    console.log(`New ${request.method}`);
+    var homeDir = `${__dirname}/front_end/`;
 
+
+    switch (request.method) {
+        
                     case 'GET':
 
                         // Security check
                         console.log(`Request url: ${request.url}`);
-                        var myPath = path.normalize(__dirname + request.url);
+
+                        if (request.url == '/'){
+                            navToHome(homeDir, response);
+                            return;
+                        }
+
+                        if (request.url == '/script.js'){
+                            serveFile(response, homeDir + 'script.js');
+                            return;
+                        }
+
+                        if (request.url == '/styles.css'){
+                            serveFile(response, homeDir + 'styles.css');
+                            return;
+                        }
                         
-                        if (!myPath.startsWith(__dirname + '/projects')) {
+                        if (request.url == '/projects/'){
+                            serveFile(response, __dirname + '/files.json');
+                            return;
+                        }
+                            
+                        var actualPath = path.normalize(__dirname + request.url);
+
+
+                        
+                        if (!actualPath.startsWith(__dirname + '/projects')) {
                             response.statusCode = 403;
                             return response.end();
                         }
-
-                        console.log(`Projects path : ${myPath}`);
-
-                        //Does the request url correspond to an item in the projects folder?
-                        console.log(`Path Basename: ${path.basename(myPath)}`);
-
-                        var actualPath = files[path.basename(myPath)];
-
-                        console.log(`Actual path: ${actualPath}`);
 
                         // Is it a directory?
                         fs.stat(actualPath, (err, stats) => {
@@ -46,7 +62,6 @@ server.on('request', (request, response) => {
                                 return response.end(); 
                             }
                             else{
-                                console.log(stats);
                                 if (stats.isFile()){
                                     // Serve the file
                                     serveFile(response, actualPath);
@@ -54,16 +69,18 @@ server.on('request', (request, response) => {
                                 if (stats.isDirectory()){
 
                                     // Does the request url end with a slash?
-                                    if (myPath.slice(-1) == '/'){
+                                    if (actualPath.slice(-1) == '/'){
 
                                         // Is there an index.html in there?
-                                        if (fs.existsSync(path + 'index.html')) {
-                                            serveFile(myPath + 'index.html');
+                                        if (fs.existsSync(actualPath + '/index.html')) {
+
+                                            serveFile(response, actualPath + 'index.html');
                                         }
                                     }
                                     else{
-                                        // Redirect to the request url with a slash appended to it    
-                                        response.setHeader("Location", myPath + '/');
+                                        // Redirect to the request url with a slash appended to it 
+                                        console.log(`Redirecting to ${path.basename(actualPath) + '/'}`);   
+                                        response.setHeader("Location", path.basename(actualPath) + '/');
                                         response.statusCode = 302;
                                         response.end();
                                     }
@@ -86,13 +103,44 @@ server.on('request', (request, response) => {
 
 }).listen(port, () => { console.log(`Running server on ${port}`); });
 
+function navToHome(homeDir, response){
 
+    gener.getDirectorys(`${__dirname}/projects/`, function(test){
+        console.log('testing');
+        console.log(test);
+        var jsonObj = JSON.stringify(test, null, 4);
+        fs.writeFileSync('files.json', jsonObj);
+        
+        fs.readdir(homeDir, {withFileTypes: true, encoding: 'utf8'}, function(err, data){
+            
+            if (err){
+                console.log(chalk.red(err));
+            }
+            else{
+                
+                for (let index = 0; index < data.length; index++) {
+                    const element = data[index];
+                    
+                    if (element.isFile()){
+                        if (element.name == 'index.html'){
+                            serveFile(response, `${homeDir}${element.name}`); 
+                        }
+                    }
+                }
+            }
+        });
+    });
+}
+        
+        
+        
 function serveFile(response, fileLocation){
 
     // Make dynamic
+    console.log(chalk.green(`Preparing to serve File : ${fileLocation}`));
+
     response.setHeader('content-type', setConentTypeWithExt(path.extname(fileLocation)));
     response.statusCode = 200;
-    console.log(`File location to setupReadStream ${fileLocation}`);
     const readStream = fs.createReadStream(fileLocation);
     readStream.on('error', err => {
         console.log(chalk.red(err));
@@ -120,34 +168,4 @@ function setConentTypeWithExt(ext){
 }
 
 
-function getFiles(path){
-    const result = fs.readdirSync( path, { withFileTypes:true, encoding: 'utf8' });
-    const newObj= {};
-
-    if (result) {
-
-        for (let index = 0; index < result.length; index++) {
-
-            const element = result[index];
-
-            if (element.isFile()){        
-                newObj[element.name] = `${path}/${element.name}`;
-            }
-            else if ( element.isDirectory()){ 
-                const fileobj =  getFiles(`${path}/${element.name}`);
-                for (var prop in fileobj) {
-                    newObj[prop] = fileobj[prop]; 
-                }
-            }
-            else{
-                console.log(chalk.bgRed(`What was that?!?!? : `));
-                console.log(element);
-            }
-        }
-    }
-    else{
-        console.log(chalk.bgRed(result));
-    }
-    return newObj;
-}
 
