@@ -13,10 +13,10 @@ exports.getFiles = function(path){
             const element = result[index];
 
             if (element.isFile()){        
-                newObj[element.name] = `${path}/${element.name}`;
+                newObj[element.name] = `${path}${element.name}`;
             }
             else if ( element.isDirectory()){ 
-                const fileobj =  exports.getFiles(`${path}/${element.name}`);
+                const fileobj =  exports.getFiles(`${path}${element.name}`);
                 for (var prop in fileobj) {
                     newObj[prop] = fileobj[prop]; 
                 }
@@ -79,7 +79,6 @@ exports.getDirectorys = function(pathToDir, completion){
 
     const currentPath = pathToDir;
     const obj = {};
-    
 
     fs.readdir(pathToDir, {withFileTypes: true, encoding: 'utf8'}, function(err, data){
 
@@ -98,7 +97,7 @@ exports.getDirectorys = function(pathToDir, completion){
 
                 if (element.isFile()){
                     
-                    fs.stat(`${currentPath}/${element.name}`, (err, data )=> {
+                    fs.stat(`${currentPath}${element.name}`, (err, data )=> {
 
                         if ( err ){
                             console.log(chalk.red(err));
@@ -109,7 +108,9 @@ exports.getDirectorys = function(pathToDir, completion){
                     });
                 }
                 else if ( element.isDirectory()){  
-                    const newPath = `${currentPath}/${element.name}`;
+
+                    const newPath = `projects/${element.name}`;
+
                     obj[element.name] = newPath;
                 }
                 else{

@@ -17,7 +17,17 @@
         url: "http://localhost:8080/projects/",
         success: function (responseData) {
             console.log(responseData);
-            document.getElementById('display').innerHTML = Handlebars.templates.cards({items: responseData});
+
+            var array = [];
+
+            for (var prop in responseData) {
+                array.push({ 
+                    name: prop,
+                    href: responseData[prop]
+                });
+            }
+            console.log(array);
+            document.getElementById('display').innerHTML = Handlebars.templates.cards({items: array});
         }
     });
 
