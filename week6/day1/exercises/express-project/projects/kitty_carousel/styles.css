@@ -1,0 +1,110 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+}
+
+nav{
+    display: flex;
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    height: 50px;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.dot{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3px;
+    border-radius: 50%;
+    height: 10px;
+    width: 10px;
+    border: 2px solid white;
+    opacity: 0.8;
+    z-index: 5;
+}
+
+.dot:hover{
+    transform: scale(1.2);
+}
+
+.dot:active{
+    background-color: white;
+}
+
+.dot.on{
+    height: 10px;
+    width: 10px;
+    /* background-color: white; */
+}
+
+.inner{
+    border-radius: 50%;
+    height: 10px;
+    width: 10px;
+    background-color: white;
+    z-index: 2;
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: 1s;
+    transition-delay: 0.2s
+}
+.inner.on{
+    background-color: white;
+    opacity: 0.8;
+}
+
+
+
+.pussy img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+#carosel{
+    position: relative;
+    display: flex;
+    height: 600px;
+    overflow: hidden;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.pussy{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    transform: translateX(100%);
+}
+
+.pussy.onScreen{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    transition-property: transform;
+    transition-duration: 1s;
+    transform: translateX(0%);
+    transition-timing-function: ease-in;
+}
+
+.pussy.start{   
+    transform: translateX(0%);
+}
+
+.pussy.exit{   
+    transition-property: transform; 
+    transition-duration: 1s;
+    transform: translateX(-100%);
+    transition-timing-function: ease-in;
+}
+
+
+
+
+
