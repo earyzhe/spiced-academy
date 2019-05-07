@@ -1,0 +1,130 @@
+body{
+    background-color: papayawhip;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: Verdana;
+    min-width: 100vw;
+    min-height: 100vh;
+}
+
+section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h2{
+    font-size: 20px;
+}
+
+img{
+    object-fit: cover;
+}
+
+p{
+    text-align: center;
+}
+
+.main{
+    border: solid 5px green;
+    margin: 8px;
+    padding: 5px
+}
+
+.centerd-row{
+    display: flex;
+    flex-direction: center;
+    justify-content: end;
+    align-items: center;
+}
+
+.centerd-column{
+    display: flex;
+    flex-direction: center;
+    justify-content: end;
+    align-items: center;
+}
+
+.view{
+    border: solid 5px green;
+    margin: 8px;
+    padding: 5px
+}
+
+#go-to{
+    margin: 50px;
+    padding: 10px 50px;
+    border-radius: 10px;
+    background-color: cadetblue;
+    box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
+    transition: all 300ms;
+    color: antiquewhite;
+}
+.go-to:hover{
+    transform: scale(1.05);
+}
+.go-to:active{
+    transform: translateY(-2px);
+    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+}
+
+#projects{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+}
+
+#no-match-img{
+    width: 50vw;
+    height: 50vh;
+}
+
+
+#project{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#nav-bar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-item{
+    padding: 10px;
+    margin: 10px;
+    text-decoration: none ;
+    transition: all 300ms;
+}
+.nav-item:hover{
+    transform: scale(1.05);
+}
+.nav-item:active{
+    transform: translateY(-2px);
+}
+
+a .link{
+    font-size: 15px;
+    text-decoration: underline
+}
+
+.link{
+    margin: 10px;
+    transition: all 300ms;
+    color: darkslategrey;
+}
+.link:hover{
+    transform: scale(1.05);
+}
+.link:active{
+    transform: translateY(-2px);
+}
