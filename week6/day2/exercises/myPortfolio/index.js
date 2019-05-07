@@ -15,8 +15,7 @@ try {
         var projectObj = JSON.parse(content);
         projectObj['url'] = `/projects/${projectId}/`;
         projectObj['descriptionUrl'] = `${projectId}`;
-        projectObj['imageUrl'] = `${__dirname}/${projectId}/descriptor_image.png`;
-        // projectObj['projectUrl'] = `${__dirname}/public/projects/${projectId}`;
+        projectObj['imageUrl'] = `/projects/${projectId}/descriptor_image.png`;
         details.push(projectObj);
     }
 } catch (e) {
@@ -32,25 +31,15 @@ app.use(express.static('public'));
 app.get('/', (req, res) => {
     res.render('home', {
         // Sets the layout template
-        layout: 'main',
+        layout: 'base',
         siteName: 'Portfolio',
         projects: details
     });
 });
 
-// app.get('/about', (req, res) => {
-//     res.render('about',{
-//         layout: 'main',
-//         siteName: 'Portfolio',
-//         // characters:futuramaArr
-//     });
-// });
-
 app.get('/:name', (req, res) => {
     // params are the parameter in the url or the route
-
     var projectToRender;
-    console.log(details);
     
     for (let index = 0; index < details.length; index++) {
         const project = details[index];
@@ -58,16 +47,22 @@ app.get('/:name', (req, res) => {
             projectToRender = project;
         }
     }
-    // console.log('Absolute path');
-    // console.log(`${__dirname}/public/projects/${projectToRender.url}`);
 
-    // res.sendFile(`${__dirname}/public/projects/${projectToRender.url}`);
-    console.log(projectToRender);
-    console.log(req.params.name);
-    res.render('project',{
-        layout: 'main',
-        project: projectToRender,
-    });
+    if (projectToRender){
+
+        res.render('project',{
+            layout: 'main',
+            project: projectToRender,
+            projects: details
+        });
+    }
+    else{
+        res.render('no_match',{
+            layout: 'main',
+            projects: details
+            
+        });
+    }
 });
 
 app.listen(8080, () => {console.log('Server running on localhost:8080');});
