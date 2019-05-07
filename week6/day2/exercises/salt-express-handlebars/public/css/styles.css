@@ -1,0 +1,19 @@
+body{
+    background-color: blue
+}
+
+.main{
+    border: solid 5px green;
+    margin: 8px;
+    padding: 5px
+}
+
+.view{
+    border: solid 5px green;
+    margin: 8px;
+    padding: 5px
+}
+
+.partial{
+    border: solid 5px blue;
+}

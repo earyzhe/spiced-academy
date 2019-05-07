@@ -1,0 +1,24 @@
+[
+    {
+		"character": "Zapp",
+		"quotes": [
+			"The alien mothership! If we hit that bullseye, the rest of the dominoes will fall like a house of cards. Checkmate.",
+			"I am the man with no name. Zapp Brannigan, at your service."
+		]
+	},
+	{
+		"character": "Bender",
+		"quotes": [
+			"All those times I said 'Kill all humans', I always whispered 'except one.' Fry was that one. And I never told him so.",
+			"My story is a lot like yours, only more interesting 'cause it involves robots.",
+            "Bite my shiny metal ass"
+		]
+	},
+	{
+		"character": "Farnsworth",
+		"quotes": [
+			"Good news, everyone!",
+			"I'm sciencing as fast as I can."
+		]
+	}
+]
