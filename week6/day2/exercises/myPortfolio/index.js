@@ -33,7 +33,8 @@ app.get('/', (req, res) => {
         // Sets the layout template
         layout: 'base',
         siteName: 'Portfolio',
-        projects: details
+        projects: details,
+
     });
 });
 
@@ -53,14 +54,17 @@ app.get('/:name', (req, res) => {
         res.render('project',{
             layout: 'main',
             project: projectToRender,
-            projects: details
+            projects: details,
+            otherLinks: {
+                name: "Home",
+                link: "/"
+            }
         });
     }
     else{
         res.render('no_match',{
             layout: 'main',
-            projects: details
-            
+            projects: details,
         });
     }
 });

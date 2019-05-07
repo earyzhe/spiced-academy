@@ -37,7 +37,7 @@ p{
 
 .centerd-row{
     display: flex;
-    flex-direction: center;
+    flex-direction: column;
     justify-content: end;
     align-items: center;
 }

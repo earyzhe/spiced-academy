@@ -1,6 +1,8 @@
 <nav id="nav-bar" class="centerd-row">
     <ul class="centerd-row">
-            <a class="link" href="/"><li class="nav-item">Home</a></li></a>
+        {{#otherLinks}}
+            <a class="link" href={{link}}><li class="nav-item">{{name}}</a></li></a>
+        {{/otherLinks}}
         {{#projects}}
             <a class="link" href="/{{descriptionUrl}}"><li class="nav-item">{{name}}</a></li></a>
         {{/projects}}
