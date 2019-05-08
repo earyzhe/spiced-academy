@@ -21,11 +21,11 @@ app.get('/data.json', (req, res) => {
                 }
                 else{
                     tweets = tweets.filter(function(tweet){
-                        return tweet.entities.urls.length < 2;
+                        return tweet.entities.urls.length == 1;
                     }).map(function(tweet){
                         return {
-                            href: tweet.entities.urls[0],
-                            text: tweet.full_text
+                            href: tweet.entities.urls[0].url,
+                            text: tweet.full_text.replace(/(?:https?|ftp|http):\/\/[\n\S]+/g, '')
                         };
                     });
 
