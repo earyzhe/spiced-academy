@@ -39,6 +39,7 @@ exports.getToken = function(callback){
     });
 
     req.on('error', (err) => callback(err));
+    /// Written into the body
     req.write('grant_type=client_credentials');
     req.end();
 };
