@@ -20,7 +20,16 @@ app.get('/data.json', (req, res) => {
                     res.sendStatus(500);
                 }
                 else{
-                    res.json(tweets);
+                    tweets = tweets.filter(function(tweet){
+                        return tweet.entities.urls.length < 2;
+                    }).map(function(tweet){
+                        return {
+                            href: tweet.entities.urls[0],
+                            text: tweet.full_text
+                        };
+                    });
+
+                    res.send(tweets);
                 }
             });
         }
