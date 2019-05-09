@@ -36,4 +36,10 @@ app.get('/data.json', (req, res) => {
     });
 });
 
+
+app.get('*', (req, res, next) => {
+    res.sendStatus(404);
+    res.end();
+});
+
 app.listen(8080, () => console.log('Sever running on localhost:8080'));

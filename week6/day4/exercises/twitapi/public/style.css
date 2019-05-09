@@ -1,0 +1,55 @@
+body {
+    margin: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+h1{
+    text-align: center;
+}
+
+#ticker {
+    overflow: hidden;
+    position: relative;
+    border-bottom: 1px black solid;
+    height: 1.5em;
+}
+
+#headlines {
+    position: absolute;
+    top: 0;
+    white-space: nowrap;
+    
+}
+
+#bottom-headlines{
+    position: absolute;
+    bottom: 0;
+    white-space: nowrap;
+    right: 0;
+    /* width: vw; */
+}
+
+#bottom-ticker{
+    overflow: hidden;
+    position: relative;
+    border-top: 1px black solid;
+    height: 1.5em;
+}
+
+a:hover{
+    text-decoration: underline;
+    color: blue;
+}
+
+a{
+    padding: 30px;
+    font-style: normal;
+    text-decoration: unset;
+    color: black
+}
+
+
