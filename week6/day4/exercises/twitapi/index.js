@@ -14,10 +14,20 @@ app.use(express.static('./public'));
 
 app.get('/data.json', (req, res) => {
     getTwitterToken()
-        .then((token) => {
-            return getTwitterTweets(token);
+        .then(token => {
+            return Promise.all([
+                getTwitterTweets(token, 'earyzhe'),
+                getTwitterTweets(token, 'bbcworld'),
+                getTwitterTweets(token, 'theonion')
+            ]);
         })
-        .then((tweets) => {
+        .then(tweets => {
+            console.log(tweets);
+            
+            for (let index = 1; index < tweets.length; index++) {
+                tweets = [].concat.apply([], tweets);   
+            }
+
             tweets = tweets.filter(function(tweet){
                 return tweet.entities.urls.length == 1;
             }).map(function(tweet){
@@ -26,10 +36,9 @@ app.get('/data.json', (req, res) => {
                     text: tweet.full_text.replace(/(?:https?|ftp|http):\/\/[\n\S]+/g, '')
                 };
             });
-
             res.send(tweets);
         })
-        .catch((err) =>{
+        .catch(err =>{
             console.log(err);
         });
 });

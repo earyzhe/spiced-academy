@@ -1,0 +1,22 @@
+module.export.testValues = [
+    'UnDefined',
+    'Undefined',
+    'Undefined',
+    'Undefined',
+    'Undefined',
+    'Undefined',
+    'Undefined',
+    'Undefined',
+    'Undefined',
+    'Undefined',
+    'Undefined',
+    'Undefined',
+    'Undefined',
+    'Undefined',
+    'Undefined',
+    'Undefined',
+    'Undefined Globes',
+    'Undefined Lines',
+    'Undefined.',
+    'Working on Myself'
+];

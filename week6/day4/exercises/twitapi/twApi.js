@@ -44,11 +44,11 @@ exports.getToken = function(callback){
     req.end();
 };
 
-exports.getTweets = function(token , callback){
+exports.getTweets = function(token , screenName, callback){
 
     const req = https.request({
         host: 'api.twitter.com',
-        path: '/1.1/statuses/user_timeline.json?screen_name=earyzhe&count=20&tweet_mode=extended',
+        path: `/1.1/statuses/user_timeline.json?screen_name=${screenName}&count=20&tweet_mode=extended`,
         method: 'GET',
         headers: {
             'content-type': 'application/x-www-form-urlencoded;charset=UTF-8',
