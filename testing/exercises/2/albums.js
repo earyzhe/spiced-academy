@@ -8,9 +8,7 @@ exports.getAlbumNames = function(q) {
                 data.albums.items[i].name
             );
         }
-        albumNames.sort();        
+        albumNames.sort(); 
         return albumNames;
     });
 };
-
-exports.getAlbumNames();

@@ -22,7 +22,6 @@ app.get('/data.json', (req, res) => {
             ]);
         })
         .then(tweets => {
-            console.log(tweets);
             
             for (let index = 1; index < tweets.length; index++) {
                 tweets = [].concat.apply([], tweets);   

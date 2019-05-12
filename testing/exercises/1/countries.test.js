@@ -10,9 +10,9 @@ test('The array that it returns contains no more than four matches',  () => {
 
 test('The search case is sensative', () => {
     expect(countries.find('Afghanistan')).toEqual(['Afghanistan']);
-    expect(countries.find('afghanistan')).toEqual([]);
+    expect(countries.find('afghanistan')).toEqual(['Afghanistan']);
 });
 
 test('If there are no matching countries, an empty array is returned',() => {
-    expect('asdljhvbajhkvbs').toBe([]);
+    expect(countries.find('asdljhvbajhkvbs')).toEqual([]);
 });
