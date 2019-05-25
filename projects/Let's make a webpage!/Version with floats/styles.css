@@ -230,9 +230,7 @@
     transition-timing-function: ease-in-out;
     transition-delay: 1;
     vertical-align: 0;
-
     position: absolute;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
